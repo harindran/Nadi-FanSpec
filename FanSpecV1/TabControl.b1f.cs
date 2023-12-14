@@ -154,10 +154,7 @@ namespace FanSpecV1
             //throw new System.NotImplementedException();
 
             
-            //SAPbouiCOM.EditTextColumn oColumns;
-            //oColumns = (SAPbouiCOM.EditTextColumn)((SAPbouiCOM.Matrix)objform.Items.Item("38")).Columns.Item("U_udtNum");
-            //oColumns.LinkedObjectType = "FANDETAIL";
-
+            
         }
 
         private SAPbouiCOM.EditText EditText1;

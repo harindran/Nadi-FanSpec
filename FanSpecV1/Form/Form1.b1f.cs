@@ -4,6 +4,7 @@ using System.Xml;
 using SAPbouiCOM.Framework;
 using System.Windows.Forms;
 using System.Threading;
+using System.IO;
 
 namespace FanSpecV1
 {
@@ -15,6 +16,8 @@ namespace FanSpecV1
         public static SAPbouiCOM.Company ocompany;
         public static SAPbobsCOM.Company dcompany;
         public string ItemCode;
+        public string filename;
+        public string newfilename;
         public int rowNo;
         public int NewDocEntry;
         public SAPbouiCOM.ItemEvent PValtype;
@@ -528,19 +531,39 @@ namespace FanSpecV1
         private void Button2_ClickBefore(object sboObject, SAPbouiCOM.SBOItemEventArg pVal, out bool BubbleEvent)
         {
             BubbleEvent = true;
-            Thread t = new Thread(() =>
-            {
+            //Thread t = new Thread(() =>
+            //{
+                SaveFileDialog DialogSave = new SaveFileDialog();
                 OpenFileDialog openFileDialog = new OpenFileDialog();
                 DialogResult dr = openFileDialog.ShowDialog();
+                openFileDialog.Title = "Browse the File";
+                openFileDialog.InitialDirectory = @"c:\";
+                openFileDialog.Filter = "All files (*.*)|*.*|All files (*.*)|*.*";
+                openFileDialog.FilterIndex = 2;
+                openFileDialog.RestoreDirectory = true;
                 if (dr == DialogResult.OK)
                 {
-                    string filename = openFileDialog.FileName;
+                    filename = openFileDialog.FileName;
                     this.EditText25.Value = filename;
+                    
                 }
-            });
-            t.IsBackground = true;
-            t.SetApartmentState(ApartmentState.STA);
-            t.Start();
+                string activeDir = @"C:\Attachment\";
+                if (!Directory.Exists(activeDir))
+                {
+                    System.IO.Directory.CreateDirectory(activeDir);
+                }
+             
+                 
+                newfilename = activeDir + Path.GetFileName(this.EditText25.Value);
+                File.Copy(filename, newfilename);
+
+
+
+               
+            //});
+            //t.IsBackground = true;
+            //t.SetApartmentState(ApartmentState.STA);
+            //t.Start();
             //throw new System.NotImplementedException();
 
         }
@@ -548,57 +571,116 @@ namespace FanSpecV1
         private void Button3_ClickBefore(object sboObject, SAPbouiCOM.SBOItemEventArg pVal, out bool BubbleEvent)
         {
             BubbleEvent = true;
-            Thread t = new Thread(() =>
-            {
+            //Thread t = new Thread(() =>
+            //{
+                SaveFileDialog DialogSave = new SaveFileDialog();
                 OpenFileDialog openFileDialog = new OpenFileDialog();
                 DialogResult dr = openFileDialog.ShowDialog();
+                openFileDialog.Title = "Browse the File";
+                openFileDialog.InitialDirectory = @"c:\";
+                openFileDialog.Filter = "All files (*.*)|*.*|All files (*.*)|*.*";
+                openFileDialog.FilterIndex = 2;
+                openFileDialog.RestoreDirectory = true;
                 if (dr == DialogResult.OK)
                 {
-                    string filename = openFileDialog.FileName;
+                    filename = openFileDialog.FileName;
                     this.EditText26.Value = filename;
+
                 }
-            });
-            t.IsBackground = true;
-            t.SetApartmentState(ApartmentState.STA);
-            t.Start();
+                string activeDir = @"C:\Attachment\";
+                if (!Directory.Exists(activeDir))
+                {
+                    System.IO.Directory.CreateDirectory(activeDir);
+                }
+
+
+                newfilename = activeDir + Path.GetFileName(this.EditText26.Value);
+                File.Copy(filename, newfilename);
+
+
+
+
+           // });
+            //t.IsBackground = true;
+            //t.SetApartmentState(ApartmentState.STA);
+            //t.Start();
+            //throw new System.NotImplementedException();
 
         }
 
         private void Button4_ClickBefore(object sboObject, SAPbouiCOM.SBOItemEventArg pVal, out bool BubbleEvent)
         {
             BubbleEvent = true;
-            Thread t = new Thread(() =>
-            {
+            //Thread t = new Thread(() =>
+            //{
+                SaveFileDialog DialogSave = new SaveFileDialog();
                 OpenFileDialog openFileDialog = new OpenFileDialog();
                 DialogResult dr = openFileDialog.ShowDialog();
+                openFileDialog.Title = "Browse the File";
+                openFileDialog.InitialDirectory = @"c:\";
+                openFileDialog.Filter = "All files (*.*)|*.*|All files (*.*)|*.*";
+                openFileDialog.FilterIndex = 2;
+                openFileDialog.RestoreDirectory = true;
                 if (dr == DialogResult.OK)
                 {
-                    string filename = openFileDialog.FileName;
+                    filename = openFileDialog.FileName;
                     this.EditText27.Value = filename;
-                }
-            });
-            t.IsBackground = true;
-            t.SetApartmentState(ApartmentState.STA);
-            t.Start();
 
+                }
+                string activeDir = @"C:\Attachment\";
+                if (!Directory.Exists(activeDir))
+                {
+                    System.IO.Directory.CreateDirectory(activeDir);
+                }
+
+
+                newfilename = activeDir + Path.GetFileName(this.EditText27.Value);
+                File.Copy(filename, newfilename);
+
+
+
+
+           // });
+            //t.IsBackground = true;
+            //t.SetApartmentState(ApartmentState.STA);
+            //t.Start();
+            //throw new System.NotImplementedException();
         }
 
         private void Button5_ClickBefore(object sboObject, SAPbouiCOM.SBOItemEventArg pVal, out bool BubbleEvent)
         {
             BubbleEvent = true;
-            Thread t = new Thread(() =>
-            {
+            //Thread t = new Thread(() =>
+            //{
+                SaveFileDialog DialogSave = new SaveFileDialog();
                 OpenFileDialog openFileDialog = new OpenFileDialog();
                 DialogResult dr = openFileDialog.ShowDialog();
+                openFileDialog.Title = "Browse the File";
+                openFileDialog.InitialDirectory = @"c:\";
+                openFileDialog.Filter = "All files (*.*)|*.*|All files (*.*)|*.*";
+                openFileDialog.FilterIndex = 2;
+                openFileDialog.RestoreDirectory = true;
                 if (dr == DialogResult.OK)
                 {
-                    string filename = openFileDialog.FileName;
+                    filename = openFileDialog.FileName;
                     this.EditText28.Value = filename;
+
                 }
-            });
-            t.IsBackground = true;
-            t.SetApartmentState(ApartmentState.STA);
-            t.Start();
+                string activeDir = @"C:\Attachment\";
+                if (!Directory.Exists(activeDir))
+                {
+                    System.IO.Directory.CreateDirectory(activeDir);
+                }
+
+
+                newfilename = activeDir + Path.GetFileName(this.EditText28.Value);
+                File.Copy(filename, newfilename);
+
+            //});
+            //t.IsBackground = true;
+            //t.SetApartmentState(ApartmentState.STA);
+            //t.Start();
+            //throw new System.NotImplementedException();
 
         }
 
@@ -676,14 +758,18 @@ namespace FanSpecV1
             if (pVal.ActionSuccess)
             {
                 SAPbouiCOM.Matrix Matrix3 = (SAPbouiCOM.Matrix)clsModule.objaddon.ActualForm.Items.Item("38").Specific;
+                //SAPbouiCOM.EditTextColumn oColumns;
+                
                 ((SAPbouiCOM.EditText)Matrix3.Columns.Item("U_udtNum").Cells.Item(rowNo).Specific).Value = objform.DataSources.DBDataSources.Item("@FANDETAIL").GetValue("DocEntry", 0);
+                //oColumns = ((SAPbouiCOM.EditTextColumn)Matrix3.Columns.Item("U_udtNum").Cells.Item(rowNo).Specific);
+                //oColumns.LinkedObjectType = "FANDETAIL";
 
-               // ((SAPbouiCOM.EditText)Matrix3.Columns.Item("U_udtNum").Cells.Item(rowNo).Specific).Value = objform.DataSources.DBDataSources.Item("@FANDETAIL").GetValue("DocEntry", 0);
+                // ((SAPbouiCOM.EditText)Matrix3.Columns.Item("U_udtNum").Cells.Item(rowNo).Specific).Value = objform.DataSources.DBDataSources.Item("@FANDETAIL").GetValue("DocEntry", 0);
                 //objform.Mode = SAPbouiCOM.BoFormMode.fm_OK_MODE;
                 //objform.Close();
 
-              //  objform.Items.Item("2").Click();
-                
+                //  objform.Items.Item("2").Click();
+
             }
 
         }
