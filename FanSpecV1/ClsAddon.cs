@@ -314,7 +314,7 @@ namespace FanSpecV1
                 break;
             case "FanSpec":
 
-                MenuEvent_For_FormOpening(ref pVal, ref BubbleEvent);
+                MenuEvent_For_FormOpening(ref pVal, ref BubbleEvent);//open for menu
                 break;
 
         }
