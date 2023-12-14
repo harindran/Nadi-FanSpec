@@ -13,7 +13,8 @@ namespace FanSpecV1
         public clsMenuEvent objmenuevent;
         public clsRightClickEvent objrightclickevent;
         //public clsGlobalMethods objglobalmethods;
-        private SAPbouiCOM.Form objform;
+        public SAPbouiCOM.Form objform;
+        public SAPbouiCOM.Form ActualForm;
         string strsql = "";
         private SAPbobsCOM.Recordset objrs;
         bool print_close = false;
@@ -117,7 +118,7 @@ namespace FanSpecV1
     }
     public void Create_Objects()
     {
-        //objmenuevent = new clsMenuEvent();
+        objmenuevent = new clsMenuEvent();
         objrightclickevent = new clsRightClickEvent();
         //objglobalmethods = new clsGlobalMethods();
 
@@ -141,7 +142,7 @@ namespace FanSpecV1
             return;
         Menucount = 10;// objapplication.Menus.Item("8448").SubMenus.Count;
                        // CreateMenu("", Menucount, "Check Print", SAPbouiCOM.BoMenuType.mt_POPUP, "CHKPRT", "43520")
-        CreateMenu("", Menucount, " FanSpecV1", SAPbouiCOM.BoMenuType.mt_STRING, "FanSpecV1", "2048");
+        //CreateMenu("", Menucount, " FanSpecV1", SAPbouiCOM.BoMenuType.mt_STRING, "FanSpecV1", "2048");
         //Menucount += 1; // "43537"
 
         // CreateMenu("", Menucount, "Tank Master", SAPbouiCOM.BoMenuType.mt_STRING, "TNKMSTR", "4352") : Menucount += 1
@@ -218,28 +219,29 @@ namespace FanSpecV1
             if (pVal.BeforeAction)
             {
                 {
-                    switch (pVal.EventType)
-                    {
-                        case SAPbouiCOM.BoEventTypes.et_FORM_CLOSE:
-                            {
-                                SAPbouiCOM.BoEventTypes EventEnum;
-                                EventEnum = pVal.EventType;
-                                if (FormUID == "PRETRAN" & EventEnum == SAPbouiCOM.BoEventTypes.et_FORM_CLOSE)
+                        switch (pVal.EventType)
+                        {
+                            case SAPbouiCOM.BoEventTypes.et_FORM_CLOSE:
                                 {
-                                    //bModal = false;
+                                    SAPbouiCOM.BoEventTypes EventEnum;
+                                    EventEnum = pVal.EventType;
+                                    if (FormUID == "UDEV000005" & EventEnum == SAPbouiCOM.BoEventTypes.et_FORM_CLOSE)
+                                    {
+                                        //bModal = false;
+                                    }
+                                    break;
                                 }
-                                break;
-                            }
-                        case SAPbouiCOM.BoEventTypes.et_FORM_LOAD:
-                            {
-                                break;
-                            }
-                        case SAPbouiCOM.BoEventTypes.et_COMBO_SELECT:
-                            {
-                                break;
-                            }
-                    }
-                }
+                            case SAPbouiCOM.BoEventTypes.et_FORM_LOAD:
+                                {
+                                    break;
+                                }
+                            case SAPbouiCOM.BoEventTypes.et_COMBO_SELECT:
+                                {
+                                    break;
+                                }
+                            
+                        }
+               }
 
             }
             else
@@ -310,7 +312,7 @@ namespace FanSpecV1
             case "1293":
                 objmenuevent.MenuEvent_For_StandardMenu(ref pVal, ref BubbleEvent);
                 break;
-            case "FanSpecV1":
+            case "FanSpec":
 
                 MenuEvent_For_FormOpening(ref pVal, ref BubbleEvent);
                 break;
@@ -329,11 +331,21 @@ namespace FanSpecV1
             {
                 switch (pVal.MenuUID)
                 {
-                    case "FanSpecV1":
+                    case "FanSpec":
                         {
-                            Form1 activeform = new Form1();
-                            activeform.Show();
-                            break;
+                                clsModule.objaddon.ActualForm = clsModule.objaddon.objapplication.Forms.ActiveForm;
+
+                              
+                                Form1 activeform = new Form1();
+                                SAPbouiCOM.Form objform = clsModule.objaddon.ActualForm;
+                                SAPbouiCOM.Matrix Matrix3 = (SAPbouiCOM.Matrix)objform.Items.Item("38").Specific;
+                                int selectrow = Matrix3.GetNextSelectedRow(0, SAPbouiCOM.BoOrderType.ot_RowOrder);
+                                activeform.rowNo = selectrow;
+                                activeform.Show();
+
+                                // Form1 activeform = new Form1();
+                                //activeform.Show();
+                                break;
                         }
                 }
 
@@ -356,7 +368,7 @@ namespace FanSpecV1
         {
             switch (objapplication.Forms.ActiveForm.TypeEx)
             {
-                case "FanSpecV1":
+                case "149":
                     objrightclickevent.RightClickEvent(ref eventInfo, ref BubbleEvent);
                     break;
             }

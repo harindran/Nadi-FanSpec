@@ -19,11 +19,21 @@ namespace FanSpecV1
                 switch (clsModule.objaddon.objapplication.Forms.ActiveForm.TypeEx)
                 {
                     case "149":
-                        FanSpecV1_RightClickEvent(ref eventInfo, ref BubbleEvent);
-                        break;
+                        if (eventInfo.ItemUID == "38")
+                        {
 
-                    case "FanSpecV1":
-                        FanSpecV1_RightClickEvent(ref eventInfo, ref BubbleEvent);
+                            RightClickMenu_Add("1280", "FanSpec", "Fan Spec", 2);
+                            
+                        }
+                        else
+                        {
+
+                            RightClickMenu_Delete("1280", "FanSpec");
+                        }
+                        break;
+                    default:
+
+                        RightClickMenu_Delete("1280", "FanSpec");
                         break;
                 }
             }
@@ -65,7 +75,9 @@ namespace FanSpecV1
         {
             try
             {
+                SAPbouiCOM.Matrix Matrix0;
                 objform = clsModule.objaddon.objapplication.Forms.ActiveForm;
+                Matrix0 = (SAPbouiCOM.Matrix)objform.Items.Item("38").Specific;
             }
             catch (Exception ex)
             {

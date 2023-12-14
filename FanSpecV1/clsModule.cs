@@ -11,6 +11,7 @@ namespace FanSpecV1
     {
         
         public static ClsAddon objaddon;
+        public static bool HANA = false;
 
         [STAThread]
         public static void Main(string[] args)

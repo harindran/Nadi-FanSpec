@@ -15,8 +15,8 @@ namespace FanSpecV1
             AddFields("@FANDETAIL", "FanSer", "Fan Series", SAPbobsCOM.BoFieldTypes.db_Alpha, 10);
             AddFields("@FANDETAIL", "FanType", "Fan Type", SAPbobsCOM.BoFieldTypes.db_Alpha, 40);
             AddFields("@FANDETAIL", "FanModel", "Fan Model", SAPbobsCOM.BoFieldTypes.db_Alpha, 40);
-            AddFields("@FANDETAIL", "Qty", "Quantity", SAPbobsCOM.BoFieldTypes.db_Numeric, 40, SAPbobsCOM.BoFldSubTypes.st_Sum);
-            AddFields("@FANDETAIL", "Price", "Price", SAPbobsCOM.BoFieldTypes.db_Numeric, 40, SAPbobsCOM.BoFldSubTypes.st_Sum);
+            AddFields("@FANDETAIL", "Qty", "Quantity", SAPbobsCOM.BoFieldTypes.db_Numeric, 10, SAPbobsCOM.BoFldSubTypes.st_Sum);
+            AddFields("@FANDETAIL", "Price", "Price", SAPbobsCOM.BoFieldTypes.db_Numeric, 10, SAPbobsCOM.BoFldSubTypes.st_Sum);
             AddFields("@FANDETAIL", "Val", "Value", SAPbobsCOM.BoFieldTypes.db_Alpha, 40);
             AddFields("@FANDETAIL", "Vol", "Volume", SAPbobsCOM.BoFieldTypes.db_Alpha, 40);
             AddFields("@FANDETAIL", "dri", "Drive", SAPbobsCOM.BoFieldTypes.db_Alpha, 40);
@@ -122,12 +122,63 @@ namespace FanSpecV1
             AddFields("@FANDETAIL", "chkhinsu", "Housing Insulation", SAPbobsCOM.BoFieldTypes.db_Alpha, 2, SAPbobsCOM.BoFldSubTypes.st_None, SAPbobsCOM.UDFLinkedSystemObjectTypesEnum.ulNone, SAPbobsCOM.BoYesNoEnum.tNO, "N", true);
             AddFields("@FANDETAIL", "chkcoug", "Coupling Guard", SAPbobsCOM.BoFieldTypes.db_Alpha, 2, SAPbobsCOM.BoFldSubTypes.st_None, SAPbobsCOM.UDFLinkedSystemObjectTypesEnum.ulNone, SAPbobsCOM.BoYesNoEnum.tNO, "N", true);
             AddFields("@FANDETAIL", "chkcoup", "Coupling", SAPbobsCOM.BoFieldTypes.db_Alpha, 2, SAPbobsCOM.BoFldSubTypes.st_None, SAPbobsCOM.UDFLinkedSystemObjectTypesEnum.ulNone, SAPbobsCOM.BoYesNoEnum.tNO, "N", true);
-            AddFields("@FANDETAIL", "saeq", "Sales Enquiry", SAPbobsCOM.BoFieldTypes.db_Alpha, 40);
-            AddFields("@FANDETAIL", "CenRep", "Centrix Report", SAPbobsCOM.BoFieldTypes.db_Alpha, 40);
-            AddFields("@FANDETAIL", "motspec", "Motor Specs", SAPbobsCOM.BoFieldTypes.db_Alpha, 40);
-            AddFields("@FANDETAIL", "mocdet", "Moc Details", SAPbobsCOM.BoFieldTypes.db_Alpha, 40);
-            AddFields("@FANDETAIL", "ot1", "Other1", SAPbobsCOM.BoFieldTypes.db_Alpha, 40);
-            AddFields("@FANDETAIL", "ot2", "Other2", SAPbobsCOM.BoFieldTypes.db_Alpha, 40);
+            AddFields("@FANDETAIL", "saeq", "Sales Enquiry", SAPbobsCOM.BoFieldTypes.db_Alpha, 200);
+            AddFields("@FANDETAIL", "CenRep", "Centrix Report", SAPbobsCOM.BoFieldTypes.db_Alpha, 200);
+            AddFields("@FANDETAIL", "motspec", "Motor Specs", SAPbobsCOM.BoFieldTypes.db_Alpha, 200);
+            AddFields("@FANDETAIL", "mocdet", "Moc Details", SAPbobsCOM.BoFieldTypes.db_Alpha, 200);
+            AddFields("@FANDETAIL", "ot1", "Other1", SAPbobsCOM.BoFieldTypes.db_Alpha, 200);
+            AddFields("@FANDETAIL", "ot2", "Other2", SAPbobsCOM.BoFieldTypes.db_Alpha, 200);
+            AddFields("OQUT", "opid", "Opportunity ID", SAPbobsCOM.BoFieldTypes.db_Alpha, 40);
+            AddFields("OQUT", "lcno", "Lead Case No", SAPbobsCOM.BoFieldTypes.db_Alpha, 40);
+            AddFields("OQUT", "lcdat", "Lead Case Date", SAPbobsCOM.BoFieldTypes.db_Date);
+            AddFields("OQUT", "lrdat", "Lead Received Date", SAPbobsCOM.BoFieldTypes.db_Date);
+            AddFields("OQUT", "opno", "Opportunity No", SAPbobsCOM.BoFieldTypes.db_Alpha, 40);
+            AddFields("OQUT", "opdat", "Opportunity Date", SAPbobsCOM.BoFieldTypes.db_Date);
+            AddFields("OQUT", "catyp", "Call Type", SAPbobsCOM.BoFieldTypes.db_Alpha, 40);
+            AddFields("OQUT", "lsmod", "Lead Source Mode", SAPbobsCOM.BoFieldTypes.db_Alpha, 40);
+            AddFields("OQUT", "sp", "Sales Person", SAPbobsCOM.BoFieldTypes.db_Alpha, 100);
+            AddFields("OQUT", "hby", "Handled By", SAPbobsCOM.BoFieldTypes.db_Alpha, 100);
+            AddFields("OQUT", "lnat", "Lead Nature", SAPbobsCOM.BoFieldTypes.db_Alpha, 40);
+            AddFields("OQUT", "opsta", "Opportunity Status", SAPbobsCOM.BoFieldTypes.db_Alpha, 40);
+            AddFields("OQUT", "doex", "Domestic/Export", SAPbobsCOM.BoFieldTypes.db_Alpha, 40);
+            AddFields("OQUT", "cdes", "Country of Destination", SAPbobsCOM.BoFieldTypes.db_Alpha, 40);
+            AddFields("OQUT", "vdat", "Validity Date", SAPbobsCOM.BoFieldTypes.db_Date);
+            AddFields("OQUT", "expva", "Expected Pipeline Value", SAPbobsCOM.BoFieldTypes.db_Float,40,SAPbobsCOM.BoFldSubTypes.st_Price);
+            AddFields("OQUT", "rloss", "Reason for Loss", SAPbobsCOM.BoFieldTypes.db_Alpha, 40);
+            AddFields("OQUT", "eqtyp", "Enquiry Type", SAPbobsCOM.BoFieldTypes.db_Alpha, 40);
+            AddFields("OQUT", "edmon", "Expected Delivery Month", SAPbobsCOM.BoFieldTypes.db_Date);
+            AddFields("OQUT", "emonpo", "Expected Month of PO", SAPbobsCOM.BoFieldTypes.db_Date);
+            AddFields("OQUT", "rtyp", "Requirement Type", SAPbobsCOM.BoFieldTypes.db_Alpha, 40);
+            AddFields("OQUT", "cucat", "Customer Category", SAPbobsCOM.BoFieldTypes.db_Alpha, 40);
+            AddFields("OQUT", "conam", "Company Name", SAPbobsCOM.BoFieldTypes.db_Alpha, 200);
+            AddFields("OQUT", "cocod", "Company Code", SAPbobsCOM.BoFieldTypes.db_Alpha, 40);
+            AddFields("OQUT", "cpers", "Contact Person", SAPbobsCOM.BoFieldTypes.db_Alpha, 200);
+            AddFields("OQUT", "cppho", "Contact Person Phone", SAPbobsCOM.BoFieldTypes.db_Alpha,200,SAPbobsCOM.BoFldSubTypes.st_Phone);
+            AddFields("OQUT", "cpeml", "Contact Person Email", SAPbobsCOM.BoFieldTypes.db_Alpha,150);
+            AddFields("OQUT", "cpdes", "Contact Person Designation", SAPbobsCOM.BoFieldTypes.db_Alpha, 40);
+            AddFields("OQUT", "cprol", "Contact Person Role", SAPbobsCOM.BoFieldTypes.db_Alpha, 40);
+            AddFields("OQUT", "alpno", "Alternate Phone No", SAPbobsCOM.BoFieldTypes.db_Alpha, 40,SAPbobsCOM.BoFldSubTypes.st_Phone);
+            AddFields("OQUT", "tyind", "Type of Industry", SAPbobsCOM.BoFieldTypes.db_Alpha,40);
+            AddFields("OQUT", "appl", "Application", SAPbobsCOM.BoFieldTypes.db_Alpha, 40);
+            AddFields("OQUT", "terr", "Territory", SAPbobsCOM.BoFieldTypes.db_Alpha, 40);
+            AddFields("OQUT", "cpname", "Customer Project Name", SAPbobsCOM.BoFieldTypes.db_Alpha, 40);
+            AddFields("OQUT", "ecus", "End Customer", SAPbobsCOM.BoFieldTypes.db_Alpha, 40);
+            AddFields("OQUT", "Chkequo", "Enable Quote", SAPbobsCOM.BoFieldTypes.db_Alpha, 2, SAPbobsCOM.BoFldSubTypes.st_None, SAPbobsCOM.UDFLinkedSystemObjectTypesEnum.ulNone, SAPbobsCOM.BoYesNoEnum.tNO, "N", true);
+            AddFields("OQUT", "qsub", "Quote Subject", SAPbobsCOM.BoFieldTypes.db_Alpha, 200);
+            AddFields("OQUT", "qid", "Quote Id", SAPbobsCOM.BoFieldTypes.db_Alpha, 40);
+            AddFields("OQUT", "qdat", "Quote Date", SAPbobsCOM.BoFieldTypes.db_Date);
+            AddFields("OQUT", "sutot", "Sub Total", SAPbobsCOM.BoFieldTypes.db_Float, 40,SAPbobsCOM.BoFldSubTypes.st_Sum);
+            AddFields("OQUT", "distot", "Discount Total", SAPbobsCOM.BoFieldTypes.db_Float, 40, SAPbobsCOM.BoFldSubTypes.st_Sum);
+            AddFields("OQUT", "taxtot", "Tax Total", SAPbobsCOM.BoFieldTypes.db_Float, 40, SAPbobsCOM.BoFldSubTypes.st_Sum);
+            AddFields("OQUT", "Nttot", "Net Total", SAPbobsCOM.BoFieldTypes.db_Float, 40, SAPbobsCOM.BoFldSubTypes.st_Sum);
+            AddFields("OQUT", "desc", "Description", SAPbobsCOM.BoFieldTypes.db_Memo, 1000);
+            AddFields("QUT1", "udtNum", "udt num", SAPbobsCOM.BoFieldTypes.db_Alpha, 40);
+
+
+
+
+
+
         }
 
         private void AddFields(string strTab, string strCol, string strDesc, SAPbobsCOM.BoFieldTypes nType, int nEditSize = 10, SAPbobsCOM.BoFldSubTypes nSubType = 0, SAPbobsCOM.UDFLinkedSystemObjectTypesEnum LinkedSysObject = 0, SAPbobsCOM.BoYesNoEnum Mandatory = SAPbobsCOM.BoYesNoEnum.tNO, string defaultvalue = "", bool Yesno = false, string[] Validvalues = null)

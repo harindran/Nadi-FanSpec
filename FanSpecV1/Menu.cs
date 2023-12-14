@@ -63,10 +63,11 @@ namespace FanSpecV1
                 
                 if (pVal.BeforeAction && pVal.MenuUID == "FanSpecV1.Form1")
                 {
-                    Form1 activeForm = new Form1();
-                    activeForm.Show();
+                    
+                    //  Form1 activeForm = new Form1();
+                    //  activeForm.Show();
                 }
-                
+
             }
             catch (Exception ex)
             {

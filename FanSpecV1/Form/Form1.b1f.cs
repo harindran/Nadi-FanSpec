@@ -13,6 +13,11 @@ namespace FanSpecV1
         public static SAPbouiCOM.Application sboapp = null;
         public static SAPbouiCOM.Form objform;
         public static SAPbouiCOM.Company ocompany;
+        public static SAPbobsCOM.Company dcompany;
+        public string ItemCode;
+        public int rowNo;
+        public int NewDocEntry;
+        public SAPbouiCOM.ItemEvent PValtype;
 
         public Form1()
         {
@@ -37,7 +42,12 @@ namespace FanSpecV1
             this.StaticText6 = ((SAPbouiCOM.StaticText)(this.GetItem("stval").Specific));
             this.EditText3 = ((SAPbouiCOM.EditText)(this.GetItem("etVal").Specific));
             this.Button0 = ((SAPbouiCOM.Button)(this.GetItem("1").Specific));
+            this.Button0.PressedAfter += new SAPbouiCOM._IButtonEvents_PressedAfterEventHandler(this.Button0_PressedAfter);
+            this.Button0.ClickAfter += new SAPbouiCOM._IButtonEvents_ClickAfterEventHandler(this.Button0_ClickAfter);
+            this.Button0.ClickBefore += new SAPbouiCOM._IButtonEvents_ClickBeforeEventHandler(this.Button0_ClickBefore);
             this.Button1 = ((SAPbouiCOM.Button)(this.GetItem("2").Specific));
+            this.Button1.ClickAfter += new SAPbouiCOM._IButtonEvents_ClickAfterEventHandler(this.Button1_ClickAfter);
+            this.Button1.ClickBefore += new SAPbouiCOM._IButtonEvents_ClickBeforeEventHandler(this.Button1_ClickBefore);
             this.StaticText7 = ((SAPbouiCOM.StaticText)(this.GetItem("stfspe").Specific));
             this.StaticText8 = ((SAPbouiCOM.StaticText)(this.GetItem("stvol").Specific));
             this.StaticText9 = ((SAPbouiCOM.StaticText)(this.GetItem("stdri").Specific));
@@ -153,7 +163,7 @@ namespace FanSpecV1
             this.CheckBox22 = ((SAPbouiCOM.CheckBox)(this.GetItem("chkoeva").Specific));
             this.CheckBox23 = ((SAPbouiCOM.CheckBox)(this.GetItem("chkosil").Specific));
             this.CheckBox24 = ((SAPbouiCOM.CheckBox)(this.GetItem("chkIelb").Specific));
-            //        this.CheckBox25 = ((SAPbouiCOM.CheckBox)(this.GetItem("chkIng").Specific));
+            //             this.CheckBox25 = ((SAPbouiCOM.CheckBox)(this.GetItem("chkIng").Specific));
             this.CheckBox26 = ((SAPbouiCOM.CheckBox)(this.GetItem("Item_117").Specific));
             this.CheckBox27 = ((SAPbouiCOM.CheckBox)(this.GetItem("chkIvan").Specific));
             this.CheckBox28 = ((SAPbouiCOM.CheckBox)(this.GetItem("chkoamp").Specific));
@@ -179,6 +189,7 @@ namespace FanSpecV1
             this.CheckBox46 = ((SAPbouiCOM.CheckBox)(this.GetItem("chklim").Specific));
             this.CheckBox47 = ((SAPbouiCOM.CheckBox)(this.GetItem("chkpreg").Specific));
             this.CheckBox48 = ((SAPbouiCOM.CheckBox)(this.GetItem("chkfap").Specific));
+            this.CheckBox48.ClickBefore += new SAPbouiCOM._ICheckBoxEvents_ClickBeforeEventHandler(this.CheckBox48_ClickBefore);
             this.CheckBox49 = ((SAPbouiCOM.CheckBox)(this.GetItem("chkAct").Specific));
             this.CheckBox50 = ((SAPbouiCOM.CheckBox)(this.GetItem("chkMo").Specific));
             this.CheckBox51 = ((SAPbouiCOM.CheckBox)(this.GetItem("chkmpul").Specific));
@@ -228,21 +239,22 @@ namespace FanSpecV1
         /// </summary>
         public override void OnInitializeFormEvents()
         {
-            this.LoadAfter += new LoadAfterHandler(this.Form_LoadAfter);
+            this.LoadAfter += new SAPbouiCOM.Framework.FormBase.LoadAfterHandler(this.Form_LoadAfter);
+            this.DataAddAfter += new DataAddAfterHandler(this.Form_DataAddAfter);
 
         }
 
         private void Form_LoadAfter(SAPbouiCOM.SBOItemEventArg pVal)
         {
-           
-            //throw new System.NotImplementedException();
 
+            //throw new System.NotImplementedException();
+            objform = clsModule.objaddon.objapplication.Forms.GetForm("FanSpecV1.Form1", pVal.FormTypeCount);
         }
 
         private void OnCustomInitialize()
         {
-            objform = clsModule.objaddon.objapplication.Forms.GetForm("FanSpecV1.Form1", 1);
-            objform = clsModule.objaddon.objapplication.Forms.ActiveForm;
+            
+           // objform = clsModule.objaddon.objapplication.Forms.ActiveForm;
         }
 
         private SAPbouiCOM.StaticText StaticText0;
@@ -287,7 +299,7 @@ namespace FanSpecV1
 
         private void EditText7_KeyDownAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
         {
-            throw new System.NotImplementedException();
+            //throw new System.NotImplementedException();
 
         }
 
@@ -358,7 +370,7 @@ namespace FanSpecV1
         private void CheckBox0_ClickBefore(object sboObject, SAPbouiCOM.SBOItemEventArg pVal, out bool BubbleEvent)
         {
             BubbleEvent = true;
-            throw new System.NotImplementedException();
+           // throw new System.NotImplementedException();
 
         }
 
@@ -377,7 +389,7 @@ namespace FanSpecV1
         private void CheckBox11_ClickBefore(object sboObject, SAPbouiCOM.SBOItemEventArg pVal, out bool BubbleEvent)
         {
             BubbleEvent = true;
-            throw new System.NotImplementedException();
+           // throw new System.NotImplementedException();
 
         }
 
@@ -410,7 +422,7 @@ namespace FanSpecV1
         private void CheckBox34_ClickBefore(object sboObject, SAPbouiCOM.SBOItemEventArg pVal, out bool BubbleEvent)
         {
             BubbleEvent = true;
-            throw new System.NotImplementedException();
+            //throw new System.NotImplementedException();
 
         }
 
@@ -445,14 +457,14 @@ namespace FanSpecV1
         private void CheckBox21_ClickBefore(object sboObject, SAPbouiCOM.SBOItemEventArg pVal, out bool BubbleEvent)
         {
             BubbleEvent = true;
-            throw new System.NotImplementedException();
+            //throw new System.NotImplementedException();
 
         }
 
         private void CheckBox29_ClickBefore(object sboObject, SAPbouiCOM.SBOItemEventArg pVal, out bool BubbleEvent)
         {
             BubbleEvent = true;
-            throw new System.NotImplementedException();
+            //throw new System.NotImplementedException();
 
         }
 
@@ -588,6 +600,73 @@ namespace FanSpecV1
             t.IsBackground = true;
             t.SetApartmentState(ApartmentState.STA);
             t.Start();
+
+        }
+
+        private void CheckBox48_ClickBefore(object sboObject, SAPbouiCOM.SBOItemEventArg pVal, out bool BubbleEvent)
+        {
+            BubbleEvent = true;
+            //throw new System.NotImplementedException();
+
+        }
+
+        private void Button0_ClickBefore(object sboObject, SAPbouiCOM.SBOItemEventArg pVal, out bool BubbleEvent)
+        {
+            BubbleEvent = true;
+            //throw new System.NotImplementedException();
+
+        }
+
+        private void Button0_ClickAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
+        {
+            try
+            {
+                if (pVal.ActionSuccess && pVal.InnerEvent)
+                {
+                   
+                }
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+            //throw new System.NotImplementedException();
+
+        }
+
+        private void Form_DataAddAfter(ref SAPbouiCOM.BusinessObjectInfo pVal)
+        {
+            if (pVal.ActionSuccess)
+            {
+                SAPbouiCOM.Matrix Matrix3 = (SAPbouiCOM.Matrix)clsModule.objaddon.ActualForm.Items.Item("38").Specific;
+
+                ((SAPbouiCOM.EditText)Matrix3.Columns.Item("U_udtNum").Cells.Item(rowNo).Specific).Value = objform.DataSources.DBDataSources.Item("@FANDETAIL").GetValue("DocEntry", 0);
+                //objform.Mode = SAPbouiCOM.BoFormMode.fm_OK_MODE;
+                //objform.Close();
+
+              //  objform.Items.Item("2").Click();
+                
+            }
+
+        }
+
+        private void Button1_ClickBefore(object sboObject, SAPbouiCOM.SBOItemEventArg pVal, out bool BubbleEvent)
+        {
+            BubbleEvent = true;
+         
+
+        }
+
+        private void Button1_ClickAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
+        {
+          //  objform.Close();
+
+        }
+
+        private void Button0_PressedAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
+        {
+            objform.Close();
+            //throw new System.NotImplementedException();
 
         }
     }
