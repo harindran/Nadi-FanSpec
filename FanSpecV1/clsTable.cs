@@ -172,7 +172,7 @@ namespace FanSpecV1
             AddFields("OQUT", "taxtot", "Tax Total", SAPbobsCOM.BoFieldTypes.db_Float, 40, SAPbobsCOM.BoFldSubTypes.st_Sum);
             AddFields("OQUT", "Nttot", "Net Total", SAPbobsCOM.BoFieldTypes.db_Float, 40, SAPbobsCOM.BoFldSubTypes.st_Sum);
             AddFields("OQUT", "desc", "Description", SAPbobsCOM.BoFieldTypes.db_Memo, 1000);
-            AddFields("QUT1", "udtNum", "udt num", SAPbobsCOM.BoFieldTypes.db_Alpha, 40);
+            AddFields("QUT1", "udtNum", "udt num", SAPbobsCOM.BoFieldTypes.db_Numeric, 10);
 
 
 

@@ -29,6 +29,10 @@ namespace FanSpecV1
         public override void OnInitializeComponent()
         {
             this.StaticText0 = ((SAPbouiCOM.StaticText)(this.GetItem("stfand").Specific));
+            objform.Items.Item("stfand").FontSize = 10;
+            objform.Items.Item("stfand").TextStyle = 1;
+            objform.Items.Item("stfand").ForeColor = 255;
+
             this.StaticText1 = ((SAPbouiCOM.StaticText)(this.GetItem("stser").Specific));
             this.StaticText2 = ((SAPbouiCOM.StaticText)(this.GetItem("sttype").Specific));
             this.StaticText3 = ((SAPbouiCOM.StaticText)(this.GetItem("stmod").Specific));
@@ -49,6 +53,9 @@ namespace FanSpecV1
             this.Button1.ClickAfter += new SAPbouiCOM._IButtonEvents_ClickAfterEventHandler(this.Button1_ClickAfter);
             this.Button1.ClickBefore += new SAPbouiCOM._IButtonEvents_ClickBeforeEventHandler(this.Button1_ClickBefore);
             this.StaticText7 = ((SAPbouiCOM.StaticText)(this.GetItem("stfspe").Specific));
+            objform.Items.Item("stfspe").FontSize = 10;
+            objform.Items.Item("stfspe").TextStyle = 1;
+            objform.Items.Item("stfspe").ForeColor = 255;
             this.StaticText8 = ((SAPbouiCOM.StaticText)(this.GetItem("stvol").Specific));
             this.StaticText9 = ((SAPbouiCOM.StaticText)(this.GetItem("stdri").Specific));
             this.StaticText10 = ((SAPbouiCOM.StaticText)(this.GetItem("stMOC").Specific));
@@ -59,6 +66,10 @@ namespace FanSpecV1
             this.StaticText15 = ((SAPbouiCOM.StaticText)(this.GetItem("stOPres").Specific));
             this.StaticText16 = ((SAPbouiCOM.StaticText)(this.GetItem("stItemp").Specific));
             this.StaticText17 = ((SAPbouiCOM.StaticText)(this.GetItem("stmspec").Specific));
+            objform.Items.Item("stmspec").FontSize = 10;
+            objform.Items.Item("stmspec").TextStyle = 1;
+            objform.Items.Item("stmspec").ForeColor = 255;
+
             this.StaticText18 = ((SAPbouiCOM.StaticText)(this.GetItem("stGtyp").Specific));
             this.StaticText19 = ((SAPbouiCOM.StaticText)(this.GetItem("stden").Specific));
             this.StaticText20 = ((SAPbouiCOM.StaticText)(this.GetItem("stPspee").Specific));
@@ -90,6 +101,9 @@ namespace FanSpecV1
             this.EditText15 = ((SAPbouiCOM.EditText)(this.GetItem("etmfre").Specific));
             this.EditText16 = ((SAPbouiCOM.EditText)(this.GetItem("etmvol").Specific));
             this.StaticText28 = ((SAPbouiCOM.StaticText)(this.GetItem("Stospe").Specific));
+            objform.Items.Item("Stospe").FontSize = 10;
+            objform.Items.Item("Stospe").TextStyle = 1;
+            objform.Items.Item("Stospe").ForeColor = 255;
             this.StaticText29 = ((SAPbouiCOM.StaticText)(this.GetItem("stdusco").Specific));
             this.StaticText30 = ((SAPbouiCOM.StaticText)(this.GetItem("stDuty").Specific));
             this.StaticText31 = ((SAPbouiCOM.StaticText)(this.GetItem("stbtyp").Specific));
@@ -103,12 +117,23 @@ namespace FanSpecV1
             this.EditText19 = ((SAPbouiCOM.EditText)(this.GetItem("etshdet").Specific));
             this.ComboBox10 = ((SAPbouiCOM.ComboBox)(this.GetItem("cstype").Specific));
             this.StaticText35 = ((SAPbouiCOM.StaticText)(this.GetItem("stPspec").Specific));
+            objform.Items.Item("stPspec").FontSize = 10;
+            objform.Items.Item("stPspec").TextStyle = 1;
+            objform.Items.Item("stPspec").ForeColor = 255;
             this.StaticText36 = ((SAPbouiCOM.StaticText)(this.GetItem("stpSpe").Specific));
+
             this.EditText20 = ((SAPbouiCOM.EditText)(this.GetItem("etexpsp").Specific));
             this.StaticText37 = ((SAPbouiCOM.StaticText)(this.GetItem("stPSpe").Specific));
+            objform.Items.Item("stPSpe").FontSize = 10;
+            objform.Items.Item("stPSpe").TextStyle = 1;
+            objform.Items.Item("stPSpe").ForeColor = 255;
             this.StaticText38 = ((SAPbouiCOM.StaticText)(this.GetItem("stpksp").Specific));
             this.EditText21 = ((SAPbouiCOM.EditText)(this.GetItem("etpsp").Specific));
             this.StaticText39 = ((SAPbouiCOM.StaticText)(this.GetItem("stappb").Specific));
+            objform.Items.Item("stappb").FontSize = 10;
+            objform.Items.Item("stappb").TextStyle = 1;
+            objform.Items.Item("stappb").ForeColor = 255;
+
             this.StaticText40 = ((SAPbouiCOM.StaticText)(this.GetItem("stappbr").Specific));
             this.EditText22 = ((SAPbouiCOM.EditText)(this.GetItem("etappbr").Specific));
             this.StaticText41 = ((SAPbouiCOM.StaticText)(this.GetItem("stAcc").Specific));
@@ -116,6 +141,10 @@ namespace FanSpecV1
             this.EditText23 = ((SAPbouiCOM.EditText)(this.GetItem("etacc").Specific));
             this.EditText24 = ((SAPbouiCOM.EditText)(this.GetItem("etMOC").Specific));
             this.StaticText43 = ((SAPbouiCOM.StaticText)(this.GetItem("stMOC1").Specific));
+            objform.Items.Item("stMOC1").FontSize = 10;
+            objform.Items.Item("stMOC1").TextStyle = 1;
+            objform.Items.Item("stMOC1").ForeColor = 255;
+
             this.StaticText44 = ((SAPbouiCOM.StaticText)(this.GetItem("stcMOC").Specific));
             this.StaticText45 = ((SAPbouiCOM.StaticText)(this.GetItem("stIMOC").Specific));
             this.StaticText46 = ((SAPbouiCOM.StaticText)(this.GetItem("stHMOC").Specific));
@@ -135,6 +164,9 @@ namespace FanSpecV1
             this.ComboBox18 = ((SAPbouiCOM.ComboBox)(this.GetItem("cSGMOC").Specific));
             this.ComboBox19 = ((SAPbouiCOM.ComboBox)(this.GetItem("cICMOC").Specific));
             this.StaticText53 = ((SAPbouiCOM.StaticText)(this.GetItem("stacces").Specific));
+            objform.Items.Item("stacces").FontSize = 10;
+            objform.Items.Item("stacces").TextStyle = 1;
+            objform.Items.Item("stacces").ForeColor = 255;
             this.CheckBox0 = ((SAPbouiCOM.CheckBox)(this.GetItem("chkhou").Specific));
             this.CheckBox0.ClickBefore += new SAPbouiCOM._ICheckBoxEvents_ClickBeforeEventHandler(this.CheckBox0_ClickBefore);
             this.CheckBox1 = ((SAPbouiCOM.CheckBox)(this.GetItem("chkimp").Specific));
@@ -206,6 +238,9 @@ namespace FanSpecV1
             this.CheckBox62 = ((SAPbouiCOM.CheckBox)(this.GetItem("chkcgua").Specific));
             this.CheckBox63 = ((SAPbouiCOM.CheckBox)(this.GetItem("chkCoup").Specific));
             this.StaticText54 = ((SAPbouiCOM.StaticText)(this.GetItem("stattc").Specific));
+            objform.Items.Item("stattc").FontSize = 10;
+            objform.Items.Item("stattc").TextStyle = 1;
+            objform.Items.Item("stattc").ForeColor = 255;
             this.StaticText55 = ((SAPbouiCOM.StaticText)(this.GetItem("stcr").Specific));
             this.StaticText56 = ((SAPbouiCOM.StaticText)(this.GetItem("stmspf").Specific));
             this.StaticText57 = ((SAPbouiCOM.StaticText)(this.GetItem("stsef").Specific));
@@ -230,6 +265,7 @@ namespace FanSpecV1
             this.Button6.ClickBefore += new SAPbouiCOM._IButtonEvents_ClickBeforeEventHandler(this.Button6_ClickBefore);
             this.Button7 = ((SAPbouiCOM.Button)(this.GetItem("bot2").Specific));
             this.Button7.ClickBefore += new SAPbouiCOM._IButtonEvents_ClickBeforeEventHandler(this.Button7_ClickBefore);
+            objform.ClientHeight = objform.Items.Item("1").Top + 25;
             this.OnCustomInitialize();
 
         }
@@ -249,6 +285,7 @@ namespace FanSpecV1
 
             //throw new System.NotImplementedException();
             objform = clsModule.objaddon.objapplication.Forms.GetForm("FanSpecV1.Form1", pVal.FormTypeCount);
+            
         }
 
         private void OnCustomInitialize()
@@ -639,8 +676,9 @@ namespace FanSpecV1
             if (pVal.ActionSuccess)
             {
                 SAPbouiCOM.Matrix Matrix3 = (SAPbouiCOM.Matrix)clsModule.objaddon.ActualForm.Items.Item("38").Specific;
-
                 ((SAPbouiCOM.EditText)Matrix3.Columns.Item("U_udtNum").Cells.Item(rowNo).Specific).Value = objform.DataSources.DBDataSources.Item("@FANDETAIL").GetValue("DocEntry", 0);
+
+               // ((SAPbouiCOM.EditText)Matrix3.Columns.Item("U_udtNum").Cells.Item(rowNo).Specific).Value = objform.DataSources.DBDataSources.Item("@FANDETAIL").GetValue("DocEntry", 0);
                 //objform.Mode = SAPbouiCOM.BoFormMode.fm_OK_MODE;
                 //objform.Close();
 
