@@ -8,6 +8,7 @@ namespace FanSpecV1
 {
     class clsTable
     {
+        Dictionary<string, string> keyvaltbl = new Dictionary<string, string>();
         public void FieldCreation()
         {
 
@@ -174,11 +175,191 @@ namespace FanSpecV1
             AddFields("OQUT", "desc", "Description", SAPbobsCOM.BoFieldTypes.db_Memo, 1000);
             AddFields("QUT1", "udtNum", "udt num", SAPbobsCOM.BoFieldTypes.db_Numeric, 10);
 
+          //  AddUDO("FANDETAIL", "FANDETAIL", SAPbobsCOM.BoUDOObjType.boud_Document, "FANDETAIL", new[] { "" }, new[] { "DocEntry" }, true, false);
+
+          //  AddFieldsNew("QUT1", "UdtNum1", "UdtNum1", SAPbobsCOM.BoFieldTypes.db_Alpha, 50, SAPbobsCOM.BoFldSubTypes.st_None, SAPbobsCOM.BoYesNoEnum.tNO
+          //, null,null, SAPbobsCOM.UDFLinkedSystemObjectTypesEnum.ulNone, "FANDETAIL");
 
 
 
+        }
+        private void AddUDO(string strUDO, string strUDODesc, SAPbobsCOM.BoUDOObjType nObjectType, string strTable, string[] childTable, string[] sFind, bool canlog = false, bool Manageseries = false)
+        {
+
+            SAPbobsCOM.UserObjectsMD oUserObjectMD = null;
+            int tablecount = 0;
+            try
+            {
+                oUserObjectMD = (SAPbobsCOM.UserObjectsMD)clsModule.objaddon.objcompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.oUserObjectsMD);
+
+                if (!oUserObjectMD.GetByKey(strUDO)) //(oUserObjectMD.GetByKey(strUDO) == 0)
+                {
+                    oUserObjectMD.Code = strUDO;
+                    oUserObjectMD.Name = strUDODesc;
+                    oUserObjectMD.ObjectType = nObjectType;
+                    oUserObjectMD.TableName = strTable;
 
 
+                    oUserObjectMD.CanCancel = SAPbobsCOM.BoYesNoEnum.tYES;
+                    oUserObjectMD.CanClose = SAPbobsCOM.BoYesNoEnum.tYES;
+                    oUserObjectMD.CanCreateDefaultForm = SAPbobsCOM.BoYesNoEnum.tYES;
+                    oUserObjectMD.CanDelete = SAPbobsCOM.BoYesNoEnum.tYES;
+
+                    if (Manageseries)
+                        oUserObjectMD.ManageSeries = SAPbobsCOM.BoYesNoEnum.tYES;
+                    else
+                        oUserObjectMD.ManageSeries = SAPbobsCOM.BoYesNoEnum.tNO;
+
+                    if (canlog)
+                    {
+                        oUserObjectMD.CanLog = SAPbobsCOM.BoYesNoEnum.tYES;
+                        oUserObjectMD.LogTableName = "A" + strTable.ToString();
+                    }
+                    else
+                    {
+                        oUserObjectMD.CanLog = SAPbobsCOM.BoYesNoEnum.tNO;
+                        oUserObjectMD.LogTableName = "";
+                    }
+
+                    oUserObjectMD.CanYearTransfer = SAPbobsCOM.BoYesNoEnum.tNO;
+
+
+                    oUserObjectMD.CanFind = SAPbobsCOM.BoYesNoEnum.tYES;
+                    tablecount = 1;
+                    if (sFind.Length > 0)
+                    {
+                        for (int i = 0, loopTo = sFind.Length - 1; i <= loopTo; i++)
+                        {
+                            if (string.IsNullOrEmpty(sFind[i]))
+                                continue;
+                            oUserObjectMD.FindColumns.ColumnAlias = sFind[i];
+                            oUserObjectMD.FindColumns.Add();
+                            oUserObjectMD.FindColumns.SetCurrentLine(tablecount);
+
+                            oUserObjectMD.FormColumns.FormColumnDescription = sFind[i].Replace("U_", "");
+                            if (sFind[i].StartsWith("U_"))
+                                oUserObjectMD.FormColumns.Editable = SAPbobsCOM.BoYesNoEnum.tYES;
+                            oUserObjectMD.FormColumns.FormColumnAlias = sFind[i];
+                            oUserObjectMD.FormColumns.Add();
+                            oUserObjectMD.FormColumns.SetCurrentLine(tablecount);
+
+                            tablecount = tablecount + 1;
+                        }
+                    }
+
+                    tablecount = 0;
+                    if (childTable != null)
+                    {
+                        if (childTable.Length > 0)
+                        {
+                            for (int i = 0, loopTo1 = childTable.Length - 1; i <= loopTo1; i++)
+                            {
+                                if (string.IsNullOrEmpty(childTable[i]))
+                                    continue;
+                                oUserObjectMD.ChildTables.SetCurrentLine(tablecount);
+                                oUserObjectMD.ChildTables.TableName = childTable[i];
+                                oUserObjectMD.ChildTables.Add();
+                                tablecount = tablecount + 1;
+                            }
+                        }
+                    }
+
+
+
+                    if (oUserObjectMD.Add() != 0)
+                    {
+                        throw new Exception(clsModule.objaddon.objcompany.GetLastErrorDescription());
+                    }
+                }
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(oUserObjectMD);
+                oUserObjectMD = null;
+                GC.WaitForPendingFinalizers();
+                GC.Collect();
+            }
+
+        }
+
+
+        private void AddFieldsNew(string strTab, string strCol, string strDesc, SAPbobsCOM.BoFieldTypes nType, int nEditSize = 10,
+     SAPbobsCOM.BoFldSubTypes nSubType = 0, SAPbobsCOM.BoYesNoEnum Mandatory = SAPbobsCOM.BoYesNoEnum.tNO, string defaultvalue = "",
+     Dictionary<string, string> keyVal = null, SAPbobsCOM.UDFLinkedSystemObjectTypesEnum linkob = SAPbobsCOM.UDFLinkedSystemObjectTypesEnum.ulNone,
+     string setlinktable = null,string setLinkUDO =null)
+        {
+
+            SAPbobsCOM.UserFieldsMD oUserFieldMD1;
+            oUserFieldMD1 = (SAPbobsCOM.UserFieldsMD)clsModule.objaddon.objcompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.oUserFields);
+            try
+            {
+
+                if (!IsColumnExists(strTab, strCol))
+                {
+                    oUserFieldMD1.Description = strDesc;
+                    oUserFieldMD1.Name = strCol;
+                    oUserFieldMD1.Type = nType;
+                    oUserFieldMD1.SubType = nSubType;
+                    oUserFieldMD1.TableName = strTab;
+                    oUserFieldMD1.EditSize = nEditSize;
+                    oUserFieldMD1.Mandatory = Mandatory;
+                    oUserFieldMD1.DefaultValue = defaultvalue;
+
+                    foreach (var item in keyvaltbl)
+                    {
+                        oUserFieldMD1.ValidValues.Value = item.Key;
+                        oUserFieldMD1.ValidValues.Description = item.Value;
+                        oUserFieldMD1.ValidValues.Add();
+                    }
+
+                    if (setlinktable != null)
+                    {
+                        oUserFieldMD1.LinkedTable = setlinktable;
+                        
+                    }
+                  else  if (setLinkUDO != null)
+                    {
+                        SAPbobsCOM.UserObjectsMD  oUserObjectMD1 = (SAPbobsCOM.UserObjectsMD)clsModule.objaddon.objcompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.oUserObjectsMD);
+                        oUserObjectMD1.GetByKey(setLinkUDO);
+                        oUserFieldMD1.LinkedUDO = oUserObjectMD1.Code ;
+                        System.Runtime.InteropServices.Marshal.ReleaseComObject(oUserObjectMD1);
+                        oUserObjectMD1 = null;
+
+                        GC.Collect();
+
+                    }
+                    else if (linkob != SAPbobsCOM.UDFLinkedSystemObjectTypesEnum.ulNone)
+                    {
+                        oUserFieldMD1.LinkedSystemObject = linkob;
+                    }
+                    int val;
+                    val = oUserFieldMD1.Add();
+
+                    if (val != 0)
+                    {
+                        clsModule.objaddon.objapplication.SetStatusBarMessage(clsModule.objaddon.objcompany.GetLastErrorDescription() + " " + strTab + " " + strCol, SAPbouiCOM.BoMessageTime.bmt_Short, true);
+                    }
+                    // System.Runtime.InteropServices.Marshal.ReleaseComObject(oUserFieldMD1)
+                }
+                keyvaltbl.Clear();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(oUserFieldMD1);
+                oUserFieldMD1 = null;
+                GC.WaitForPendingFinalizers();
+                GC.Collect();
+            }
         }
 
         private void AddFields(string strTab, string strCol, string strDesc, SAPbobsCOM.BoFieldTypes nType, int nEditSize = 10, SAPbobsCOM.BoFldSubTypes nSubType = 0, SAPbobsCOM.UDFLinkedSystemObjectTypesEnum LinkedSysObject = 0, SAPbobsCOM.BoYesNoEnum Mandatory = SAPbobsCOM.BoYesNoEnum.tNO, string defaultvalue = "", bool Yesno = false, string[] Validvalues = null)

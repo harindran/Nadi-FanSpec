@@ -341,7 +341,7 @@ namespace FanSpecV1
                                 SAPbouiCOM.Matrix Matrix3 = (SAPbouiCOM.Matrix)objform.Items.Item("38").Specific;
                                 int selectrow = Matrix3.GetNextSelectedRow(0, SAPbouiCOM.BoOrderType.ot_RowOrder);
                                 activeform.rowNo = selectrow;
-                                activeform.Show();
+                             
 
                                 // Form1 activeform = new Form1();
                                 //activeform.Show();

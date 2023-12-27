@@ -113,6 +113,8 @@ namespace FanSpecV1
             this.EditText35 = ((SAPbouiCOM.EditText)(this.GetItem("etcpdes").Specific));
             this.EditText36 = ((SAPbouiCOM.EditText)(this.GetItem("etcpna").Specific));
             this.ComboBox8 = ((SAPbouiCOM.ComboBox)(this.GetItem("ctind").Specific));
+            this.Matrix0 = ((SAPbouiCOM.Matrix)(this.GetItem("38").Specific));
+            this.Matrix0.LinkPressedBefore += new SAPbouiCOM._IMatrixEvents_LinkPressedBeforeEventHandler(this.Matrix0_LinkPressedBefore);
             this.OnCustomInitialize();
 
         }
@@ -137,6 +139,13 @@ namespace FanSpecV1
                 Folder0.GroupWith("256000695");
                 //Folder0.Item.Left = objform.Items.Item("256000695").Left + objform.Items.Item("256000695").Width;
                 objform.Items.Item("Item_0").Left = objform.Items.Item("1320002137").Left;
+
+                objform.Items.Item("stopphd").FontSize = 12;
+                objform.Items.Item("stopphd").TextStyle = 1;
+                objform.Items.Item("stcdet").FontSize = 12;
+                objform.Items.Item("stcdet").TextStyle = 1;
+                objform.Items.Item("sQsu").FontSize = 12;
+                objform.Items.Item("sQsu").TextStyle = 1; 
             }
             catch (Exception ex)
             {
@@ -147,14 +156,13 @@ namespace FanSpecV1
 
         private void Form_LoadAfter(SAPbouiCOM.SBOItemEventArg pVal)
         {
-            //objform.Items.Item("stopphd").Top = objform.Items.Item("62").Top;
-            //objform.Items.Item("stopphd").Top = objform.Items.Item("62").Top + objform.Items.Item("62").Height + 5;
-            //objform = clsModule.objaddon.objapplication.Forms.GetForm("149",pVal.FormTypeCount);
-            //objform.PaneLevel = 26;
-            //throw new System.NotImplementedException();
 
-            
-            
+            //SAPbouiCOM.LinkedButton linkedButton;
+            //SAPbouiCOM.Column ocolumns;
+            //ocolumns = (SAPbouiCOM.Column)Matrix0.Columns.Item("U_udtNum");            
+            //linkedButton = (SAPbouiCOM.LinkedButton)ocolumns.ExtendedObject;
+            //linkedButton.LinkedObject = SAPbouiCOM.BoLinkedObject.lf_UserDefinedObject;
+            //linkedButton.LinkedObjectType = "FANDETAIL";
         }
 
         private SAPbouiCOM.EditText EditText1;
@@ -162,8 +170,7 @@ namespace FanSpecV1
 
         private void EditText2_KeyDownAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
         {
-           // throw new System.NotImplementedException();
-
+         
         }
 
         private void Folder0_PressedAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
@@ -274,19 +281,33 @@ namespace FanSpecV1
 
         private void EditText6_KeyDownAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
         {
-            //throw new System.NotImplementedException();
-
         }
 
         private void EditText5_KeyDownAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
         {
-            //throw new System.NotImplementedException();
-
         }
 
         private void EditText24_KeyDownAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
         {
-            //throw new System.NotImplementedException();
+        }
+
+        private SAPbouiCOM.Matrix Matrix0;
+
+        private void Matrix0_LinkPressedBefore(object sboObject, SAPbouiCOM.SBOItemEventArg pVal, out bool BubbleEvent)
+        {
+            BubbleEvent = true;
+            if (pVal.ColUID=="U_udtNum")
+            {
+                BubbleEvent = false;
+                string doc = ((SAPbouiCOM.EditText)Matrix0.Columns.Item("U_udtNum").Cells.Item(pVal.Row).Specific).Value;
+                clsModule.objaddon.ActualForm = objform;
+
+
+                Form1 form1 = new Form1(doc);
+
+                form1.rowNo = pVal.Row;
+
+            }
 
         }
     }

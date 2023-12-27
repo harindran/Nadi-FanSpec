@@ -5,6 +5,7 @@ using SAPbouiCOM.Framework;
 using System.Windows.Forms;
 using System.Threading;
 using System.IO;
+using System.Diagnostics;
 
 namespace FanSpecV1
 {
@@ -12,7 +13,7 @@ namespace FanSpecV1
     class Form1 : UserFormBase
     {
         public static SAPbouiCOM.Application sboapp = null;
-        public static SAPbouiCOM.Form objform;
+        private static SAPbouiCOM.Form oform;
         public static SAPbouiCOM.Company ocompany;
         public static SAPbobsCOM.Company dcompany;
         public string ItemCode;
@@ -21,9 +22,20 @@ namespace FanSpecV1
         public int rowNo;
         public int NewDocEntry;
         public SAPbouiCOM.ItemEvent PValtype;
+       private string Returnfilename = "";
 
+        private string docentry;
         public Form1()
         {
+        }
+        public Form1(string Docentry)
+        {
+            docentry = Docentry;
+            oform.Mode = SAPbouiCOM.BoFormMode.fm_FIND_MODE;
+            EditText37.Item.Visible = true;
+          EditText37.Value = Docentry;
+           oform.Items.Item("1").Click();
+            EditText37.Item.Visible = false;
         }
 
         /// <summary>
@@ -32,10 +44,6 @@ namespace FanSpecV1
         public override void OnInitializeComponent()
         {
             this.StaticText0 = ((SAPbouiCOM.StaticText)(this.GetItem("stfand").Specific));
-            objform.Items.Item("stfand").FontSize = 10;
-            objform.Items.Item("stfand").TextStyle = 1;
-            objform.Items.Item("stfand").ForeColor = 255;
-
             this.StaticText1 = ((SAPbouiCOM.StaticText)(this.GetItem("stser").Specific));
             this.StaticText2 = ((SAPbouiCOM.StaticText)(this.GetItem("sttype").Specific));
             this.StaticText3 = ((SAPbouiCOM.StaticText)(this.GetItem("stmod").Specific));
@@ -56,9 +64,6 @@ namespace FanSpecV1
             this.Button1.ClickAfter += new SAPbouiCOM._IButtonEvents_ClickAfterEventHandler(this.Button1_ClickAfter);
             this.Button1.ClickBefore += new SAPbouiCOM._IButtonEvents_ClickBeforeEventHandler(this.Button1_ClickBefore);
             this.StaticText7 = ((SAPbouiCOM.StaticText)(this.GetItem("stfspe").Specific));
-            objform.Items.Item("stfspe").FontSize = 10;
-            objform.Items.Item("stfspe").TextStyle = 1;
-            objform.Items.Item("stfspe").ForeColor = 255;
             this.StaticText8 = ((SAPbouiCOM.StaticText)(this.GetItem("stvol").Specific));
             this.StaticText9 = ((SAPbouiCOM.StaticText)(this.GetItem("stdri").Specific));
             this.StaticText10 = ((SAPbouiCOM.StaticText)(this.GetItem("stMOC").Specific));
@@ -69,10 +74,6 @@ namespace FanSpecV1
             this.StaticText15 = ((SAPbouiCOM.StaticText)(this.GetItem("stOPres").Specific));
             this.StaticText16 = ((SAPbouiCOM.StaticText)(this.GetItem("stItemp").Specific));
             this.StaticText17 = ((SAPbouiCOM.StaticText)(this.GetItem("stmspec").Specific));
-            objform.Items.Item("stmspec").FontSize = 10;
-            objform.Items.Item("stmspec").TextStyle = 1;
-            objform.Items.Item("stmspec").ForeColor = 255;
-
             this.StaticText18 = ((SAPbouiCOM.StaticText)(this.GetItem("stGtyp").Specific));
             this.StaticText19 = ((SAPbouiCOM.StaticText)(this.GetItem("stden").Specific));
             this.StaticText20 = ((SAPbouiCOM.StaticText)(this.GetItem("stPspee").Specific));
@@ -104,9 +105,6 @@ namespace FanSpecV1
             this.EditText15 = ((SAPbouiCOM.EditText)(this.GetItem("etmfre").Specific));
             this.EditText16 = ((SAPbouiCOM.EditText)(this.GetItem("etmvol").Specific));
             this.StaticText28 = ((SAPbouiCOM.StaticText)(this.GetItem("Stospe").Specific));
-            objform.Items.Item("Stospe").FontSize = 10;
-            objform.Items.Item("Stospe").TextStyle = 1;
-            objform.Items.Item("Stospe").ForeColor = 255;
             this.StaticText29 = ((SAPbouiCOM.StaticText)(this.GetItem("stdusco").Specific));
             this.StaticText30 = ((SAPbouiCOM.StaticText)(this.GetItem("stDuty").Specific));
             this.StaticText31 = ((SAPbouiCOM.StaticText)(this.GetItem("stbtyp").Specific));
@@ -118,25 +116,15 @@ namespace FanSpecV1
             this.ComboBox9 = ((SAPbouiCOM.ComboBox)(this.GetItem("Cbtype").Specific));
             this.EditText18 = ((SAPbouiCOM.EditText)(this.GetItem("etpmake").Specific));
             this.EditText19 = ((SAPbouiCOM.EditText)(this.GetItem("etshdet").Specific));
+            this.EditText19.KeyDownAfter += new SAPbouiCOM._IEditTextEvents_KeyDownAfterEventHandler(this.EditText19_KeyDownAfter);
             this.ComboBox10 = ((SAPbouiCOM.ComboBox)(this.GetItem("cstype").Specific));
             this.StaticText35 = ((SAPbouiCOM.StaticText)(this.GetItem("stPspec").Specific));
-            objform.Items.Item("stPspec").FontSize = 10;
-            objform.Items.Item("stPspec").TextStyle = 1;
-            objform.Items.Item("stPspec").ForeColor = 255;
             this.StaticText36 = ((SAPbouiCOM.StaticText)(this.GetItem("stpSpe").Specific));
-
             this.EditText20 = ((SAPbouiCOM.EditText)(this.GetItem("etexpsp").Specific));
             this.StaticText37 = ((SAPbouiCOM.StaticText)(this.GetItem("stPSpe").Specific));
-            objform.Items.Item("stPSpe").FontSize = 10;
-            objform.Items.Item("stPSpe").TextStyle = 1;
-            objform.Items.Item("stPSpe").ForeColor = 255;
             this.StaticText38 = ((SAPbouiCOM.StaticText)(this.GetItem("stpksp").Specific));
             this.EditText21 = ((SAPbouiCOM.EditText)(this.GetItem("etpsp").Specific));
             this.StaticText39 = ((SAPbouiCOM.StaticText)(this.GetItem("stappb").Specific));
-            objform.Items.Item("stappb").FontSize = 10;
-            objform.Items.Item("stappb").TextStyle = 1;
-            objform.Items.Item("stappb").ForeColor = 255;
-
             this.StaticText40 = ((SAPbouiCOM.StaticText)(this.GetItem("stappbr").Specific));
             this.EditText22 = ((SAPbouiCOM.EditText)(this.GetItem("etappbr").Specific));
             this.StaticText41 = ((SAPbouiCOM.StaticText)(this.GetItem("stAcc").Specific));
@@ -144,10 +132,6 @@ namespace FanSpecV1
             this.EditText23 = ((SAPbouiCOM.EditText)(this.GetItem("etacc").Specific));
             this.EditText24 = ((SAPbouiCOM.EditText)(this.GetItem("etMOC").Specific));
             this.StaticText43 = ((SAPbouiCOM.StaticText)(this.GetItem("stMOC1").Specific));
-            objform.Items.Item("stMOC1").FontSize = 10;
-            objform.Items.Item("stMOC1").TextStyle = 1;
-            objform.Items.Item("stMOC1").ForeColor = 255;
-
             this.StaticText44 = ((SAPbouiCOM.StaticText)(this.GetItem("stcMOC").Specific));
             this.StaticText45 = ((SAPbouiCOM.StaticText)(this.GetItem("stIMOC").Specific));
             this.StaticText46 = ((SAPbouiCOM.StaticText)(this.GetItem("stHMOC").Specific));
@@ -167,9 +151,6 @@ namespace FanSpecV1
             this.ComboBox18 = ((SAPbouiCOM.ComboBox)(this.GetItem("cSGMOC").Specific));
             this.ComboBox19 = ((SAPbouiCOM.ComboBox)(this.GetItem("cICMOC").Specific));
             this.StaticText53 = ((SAPbouiCOM.StaticText)(this.GetItem("stacces").Specific));
-            objform.Items.Item("stacces").FontSize = 10;
-            objform.Items.Item("stacces").TextStyle = 1;
-            objform.Items.Item("stacces").ForeColor = 255;
             this.CheckBox0 = ((SAPbouiCOM.CheckBox)(this.GetItem("chkhou").Specific));
             this.CheckBox0.ClickBefore += new SAPbouiCOM._ICheckBoxEvents_ClickBeforeEventHandler(this.CheckBox0_ClickBefore);
             this.CheckBox1 = ((SAPbouiCOM.CheckBox)(this.GetItem("chkimp").Specific));
@@ -198,7 +179,7 @@ namespace FanSpecV1
             this.CheckBox22 = ((SAPbouiCOM.CheckBox)(this.GetItem("chkoeva").Specific));
             this.CheckBox23 = ((SAPbouiCOM.CheckBox)(this.GetItem("chkosil").Specific));
             this.CheckBox24 = ((SAPbouiCOM.CheckBox)(this.GetItem("chkIelb").Specific));
-            //             this.CheckBox25 = ((SAPbouiCOM.CheckBox)(this.GetItem("chkIng").Specific));
+            //                     this.CheckBox25 = ((SAPbouiCOM.CheckBox)(this.GetItem("chkIng").Specific));
             this.CheckBox26 = ((SAPbouiCOM.CheckBox)(this.GetItem("Item_117").Specific));
             this.CheckBox27 = ((SAPbouiCOM.CheckBox)(this.GetItem("chkIvan").Specific));
             this.CheckBox28 = ((SAPbouiCOM.CheckBox)(this.GetItem("chkoamp").Specific));
@@ -241,34 +222,38 @@ namespace FanSpecV1
             this.CheckBox62 = ((SAPbouiCOM.CheckBox)(this.GetItem("chkcgua").Specific));
             this.CheckBox63 = ((SAPbouiCOM.CheckBox)(this.GetItem("chkCoup").Specific));
             this.StaticText54 = ((SAPbouiCOM.StaticText)(this.GetItem("stattc").Specific));
-            objform.Items.Item("stattc").FontSize = 10;
-            objform.Items.Item("stattc").TextStyle = 1;
-            objform.Items.Item("stattc").ForeColor = 255;
             this.StaticText55 = ((SAPbouiCOM.StaticText)(this.GetItem("stcr").Specific));
             this.StaticText56 = ((SAPbouiCOM.StaticText)(this.GetItem("stmspf").Specific));
             this.StaticText57 = ((SAPbouiCOM.StaticText)(this.GetItem("stsef").Specific));
             this.EditText25 = ((SAPbouiCOM.EditText)(this.GetItem("etsef").Specific));
+            this.EditText25.DoubleClickAfter += new SAPbouiCOM._IEditTextEvents_DoubleClickAfterEventHandler(this.EditText25_DoubleClickAfter);
             this.Button2 = ((SAPbouiCOM.Button)(this.GetItem("bbsf").Specific));
             this.Button2.ClickBefore += new SAPbouiCOM._IButtonEvents_ClickBeforeEventHandler(this.Button2_ClickBefore);
             this.EditText26 = ((SAPbouiCOM.EditText)(this.GetItem("etcrf").Specific));
+            this.EditText26.KeyDownAfter += new SAPbouiCOM._IEditTextEvents_KeyDownAfterEventHandler(this.EditText26_KeyDownAfter);
             this.Button3 = ((SAPbouiCOM.Button)(this.GetItem("bcrf").Specific));
             this.Button3.ClickBefore += new SAPbouiCOM._IButtonEvents_ClickBeforeEventHandler(this.Button3_ClickBefore);
             this.EditText27 = ((SAPbouiCOM.EditText)(this.GetItem("etmsf").Specific));
+            this.EditText27.DoubleClickAfter += new SAPbouiCOM._IEditTextEvents_DoubleClickAfterEventHandler(this.EditText27_DoubleClickAfter);
             this.Button4 = ((SAPbouiCOM.Button)(this.GetItem("bmspf").Specific));
             this.Button4.ClickBefore += new SAPbouiCOM._IButtonEvents_ClickBeforeEventHandler(this.Button4_ClickBefore);
             this.StaticText58 = ((SAPbouiCOM.StaticText)(this.GetItem("stMocf").Specific));
             this.EditText28 = ((SAPbouiCOM.EditText)(this.GetItem("Item_11").Specific));
+            this.EditText28.KeyDownAfter += new SAPbouiCOM._IEditTextEvents_KeyDownAfterEventHandler(this.EditText28_KeyDownAfter);
             this.Button5 = ((SAPbouiCOM.Button)(this.GetItem("bmocf").Specific));
             this.Button5.ClickBefore += new SAPbouiCOM._IButtonEvents_ClickBeforeEventHandler(this.Button5_ClickBefore);
             this.StaticText59 = ((SAPbouiCOM.StaticText)(this.GetItem("stot1").Specific));
             this.StaticText60 = ((SAPbouiCOM.StaticText)(this.GetItem("stot2").Specific));
             this.EditText29 = ((SAPbouiCOM.EditText)(this.GetItem("etot1").Specific));
+            this.EditText29.KeyDownAfter += new SAPbouiCOM._IEditTextEvents_KeyDownAfterEventHandler(this.EditText29_KeyDownAfter);
             this.EditText30 = ((SAPbouiCOM.EditText)(this.GetItem("etot2").Specific));
+            this.EditText30.KeyDownAfter += new SAPbouiCOM._IEditTextEvents_KeyDownAfterEventHandler(this.EditText30_KeyDownAfter);
             this.Button6 = ((SAPbouiCOM.Button)(this.GetItem("bot1").Specific));
             this.Button6.ClickBefore += new SAPbouiCOM._IButtonEvents_ClickBeforeEventHandler(this.Button6_ClickBefore);
             this.Button7 = ((SAPbouiCOM.Button)(this.GetItem("bot2").Specific));
             this.Button7.ClickBefore += new SAPbouiCOM._IButtonEvents_ClickBeforeEventHandler(this.Button7_ClickBefore);
-            objform.ClientHeight = objform.Items.Item("1").Top + 25;
+            this.EditText37 = ((SAPbouiCOM.EditText)(this.GetItem("DocEntry").Specific));
+            this.EditText37.KeyDownAfter += new SAPbouiCOM._IEditTextEvents_KeyDownAfterEventHandler(this.EditText37_KeyDownAfter);
             this.OnCustomInitialize();
 
         }
@@ -287,14 +272,35 @@ namespace FanSpecV1
         {
 
             //throw new System.NotImplementedException();
-            objform = clsModule.objaddon.objapplication.Forms.GetForm("FanSpecV1.Form1", pVal.FormTypeCount);
+            oform = clsModule.objaddon.objapplication.Forms.GetForm("FanSpecV1.Form1", pVal.FormTypeCount);
+
             
         }
 
         private void OnCustomInitialize()
         {
-            
-           // objform = clsModule.objaddon.objapplication.Forms.ActiveForm;
+             oform.Items.Item("stmspec").FontSize = 12;
+             oform.Items.Item("stmspec").TextStyle = 1;
+             oform.Items.Item("stfspe").FontSize = 12;
+             oform.Items.Item("stfspe").TextStyle = 1;
+             oform.Items.Item("stfand").FontSize = 12;
+             oform.Items.Item("stfand").TextStyle = 1;
+             oform.Items.Item("Stospe").FontSize = 12;
+             oform.Items.Item("Stospe").TextStyle = 1;
+             oform.Items.Item("stPspec").FontSize = 12;
+             oform.Items.Item("stPspec").TextStyle = 1;
+             oform.Items.Item("stappb").FontSize = 12;
+             oform.Items.Item("stappb").TextStyle = 1;
+             oform.Items.Item("stPSpe").FontSize = 12;
+             oform.Items.Item("stPSpe").TextStyle = 1;
+             oform.Items.Item("stMOC1").FontSize = 12;
+             oform.Items.Item("stMOC1").TextStyle = 1;
+            oform.Items.Item("stacces").FontSize = 12;
+            oform.Items.Item("stacces").TextStyle = 1;
+            oform.Items.Item("stattc").FontSize = 12;
+            oform.Items.Item("stattc").TextStyle = 1;
+            oform.ClientHeight = (oform.Items.Item("1").Top + 25);
+            EditText37.Item.Visible = false;
         }
 
         private SAPbouiCOM.StaticText StaticText0;
@@ -531,194 +537,46 @@ namespace FanSpecV1
         private void Button2_ClickBefore(object sboObject, SAPbouiCOM.SBOItemEventArg pVal, out bool BubbleEvent)
         {
             BubbleEvent = true;
-            //Thread t = new Thread(() =>
-            //{
-                SaveFileDialog DialogSave = new SaveFileDialog();
-                OpenFileDialog openFileDialog = new OpenFileDialog();
-                DialogResult dr = openFileDialog.ShowDialog();
-                openFileDialog.Title = "Browse the File";
-                openFileDialog.InitialDirectory = @"c:\";
-                openFileDialog.Filter = "All files (*.*)|*.*|All files (*.*)|*.*";
-                openFileDialog.FilterIndex = 2;
-                openFileDialog.RestoreDirectory = true;
-                if (dr == DialogResult.OK)
-                {
-                    filename = openFileDialog.FileName;
-                    this.EditText25.Value = filename;
-                    
-                }
-                string activeDir = @"C:\Attachment\";
-                if (!Directory.Exists(activeDir))
-                {
-                    System.IO.Directory.CreateDirectory(activeDir);
-                }
-             
-                 
-                newfilename = activeDir + Path.GetFileName(this.EditText25.Value);
-                File.Copy(filename, newfilename);
 
-
-
-               
-            //});
-            //t.IsBackground = true;
-            //t.SetApartmentState(ApartmentState.STA);
-            //t.Start();
-            //throw new System.NotImplementedException();
-
+            string strFileName = FindFile();
+            this.EditText25.Value = strFileName;
         }
 
         private void Button3_ClickBefore(object sboObject, SAPbouiCOM.SBOItemEventArg pVal, out bool BubbleEvent)
         {
             BubbleEvent = true;
-            //Thread t = new Thread(() =>
-            //{
-                SaveFileDialog DialogSave = new SaveFileDialog();
-                OpenFileDialog openFileDialog = new OpenFileDialog();
-                DialogResult dr = openFileDialog.ShowDialog();
-                openFileDialog.Title = "Browse the File";
-                openFileDialog.InitialDirectory = @"c:\";
-                openFileDialog.Filter = "All files (*.*)|*.*|All files (*.*)|*.*";
-                openFileDialog.FilterIndex = 2;
-                openFileDialog.RestoreDirectory = true;
-                if (dr == DialogResult.OK)
-                {
-                    filename = openFileDialog.FileName;
-                    this.EditText26.Value = filename;
-
-                }
-                string activeDir = @"C:\Attachment\";
-                if (!Directory.Exists(activeDir))
-                {
-                    System.IO.Directory.CreateDirectory(activeDir);
-                }
-
-
-                newfilename = activeDir + Path.GetFileName(this.EditText26.Value);
-                File.Copy(filename, newfilename);
-
-
-
-
-           // });
-            //t.IsBackground = true;
-            //t.SetApartmentState(ApartmentState.STA);
-            //t.Start();
-            //throw new System.NotImplementedException();
+            string strFileName = FindFile();
+            this.EditText26.Value = strFileName;
 
         }
 
         private void Button4_ClickBefore(object sboObject, SAPbouiCOM.SBOItemEventArg pVal, out bool BubbleEvent)
         {
             BubbleEvent = true;
-            //Thread t = new Thread(() =>
-            //{
-                SaveFileDialog DialogSave = new SaveFileDialog();
-                OpenFileDialog openFileDialog = new OpenFileDialog();
-                DialogResult dr = openFileDialog.ShowDialog();
-                openFileDialog.Title = "Browse the File";
-                openFileDialog.InitialDirectory = @"c:\";
-                openFileDialog.Filter = "All files (*.*)|*.*|All files (*.*)|*.*";
-                openFileDialog.FilterIndex = 2;
-                openFileDialog.RestoreDirectory = true;
-                if (dr == DialogResult.OK)
-                {
-                    filename = openFileDialog.FileName;
-                    this.EditText27.Value = filename;
-
-                }
-                string activeDir = @"C:\Attachment\";
-                if (!Directory.Exists(activeDir))
-                {
-                    System.IO.Directory.CreateDirectory(activeDir);
-                }
-
-
-                newfilename = activeDir + Path.GetFileName(this.EditText27.Value);
-                File.Copy(filename, newfilename);
-
-
-
-
-           // });
-            //t.IsBackground = true;
-            //t.SetApartmentState(ApartmentState.STA);
-            //t.Start();
-            //throw new System.NotImplementedException();
+            string strFileName = FindFile();
+            this.EditText27.Value = strFileName;
         }
 
         private void Button5_ClickBefore(object sboObject, SAPbouiCOM.SBOItemEventArg pVal, out bool BubbleEvent)
         {
             BubbleEvent = true;
-            //Thread t = new Thread(() =>
-            //{
-                SaveFileDialog DialogSave = new SaveFileDialog();
-                OpenFileDialog openFileDialog = new OpenFileDialog();
-                DialogResult dr = openFileDialog.ShowDialog();
-                openFileDialog.Title = "Browse the File";
-                openFileDialog.InitialDirectory = @"c:\";
-                openFileDialog.Filter = "All files (*.*)|*.*|All files (*.*)|*.*";
-                openFileDialog.FilterIndex = 2;
-                openFileDialog.RestoreDirectory = true;
-                if (dr == DialogResult.OK)
-                {
-                    filename = openFileDialog.FileName;
-                    this.EditText28.Value = filename;
-
-                }
-                string activeDir = @"C:\Attachment\";
-                if (!Directory.Exists(activeDir))
-                {
-                    System.IO.Directory.CreateDirectory(activeDir);
-                }
-
-
-                newfilename = activeDir + Path.GetFileName(this.EditText28.Value);
-                File.Copy(filename, newfilename);
-
-            //});
-            //t.IsBackground = true;
-            //t.SetApartmentState(ApartmentState.STA);
-            //t.Start();
-            //throw new System.NotImplementedException();
-
+            string strFileName = FindFile();
+            this.EditText28.Value = strFileName;
         }
 
         private void Button6_ClickBefore(object sboObject, SAPbouiCOM.SBOItemEventArg pVal, out bool BubbleEvent)
         {
             BubbleEvent = true;
-            Thread t = new Thread(() =>
-            {
-                OpenFileDialog openFileDialog = new OpenFileDialog();
-                DialogResult dr = openFileDialog.ShowDialog();
-                if (dr == DialogResult.OK)
-                {
-                    string filename = openFileDialog.FileName;
-                    this.EditText29.Value = filename;
-                }
-            });
-            t.IsBackground = true;
-            t.SetApartmentState(ApartmentState.STA);
-            t.Start();
+            string strFileName = FindFile();
+            this.EditText29.Value = strFileName;
 
         }
 
         private void Button7_ClickBefore(object sboObject, SAPbouiCOM.SBOItemEventArg pVal, out bool BubbleEvent)
         {
             BubbleEvent = true;
-            Thread t = new Thread(() =>
-            {
-                OpenFileDialog openFileDialog = new OpenFileDialog();
-                DialogResult dr = openFileDialog.ShowDialog();
-                if (dr == DialogResult.OK)
-                {
-                    string filename = openFileDialog.FileName;
-                    this.EditText30.Value = filename;
-                }
-            });
-            t.IsBackground = true;
-            t.SetApartmentState(ApartmentState.STA);
-            t.Start();
+            string strFileName = FindFile();
+            this.EditText30.Value = strFileName;
 
         }
 
@@ -758,17 +616,9 @@ namespace FanSpecV1
             if (pVal.ActionSuccess)
             {
                 SAPbouiCOM.Matrix Matrix3 = (SAPbouiCOM.Matrix)clsModule.objaddon.ActualForm.Items.Item("38").Specific;
-                //SAPbouiCOM.EditTextColumn oColumns;
                 
-                ((SAPbouiCOM.EditText)Matrix3.Columns.Item("U_udtNum").Cells.Item(rowNo).Specific).Value = objform.DataSources.DBDataSources.Item("@FANDETAIL").GetValue("DocEntry", 0);
-                //oColumns = ((SAPbouiCOM.EditTextColumn)Matrix3.Columns.Item("U_udtNum").Cells.Item(rowNo).Specific);
-                //oColumns.LinkedObjectType = "FANDETAIL";
-
-                // ((SAPbouiCOM.EditText)Matrix3.Columns.Item("U_udtNum").Cells.Item(rowNo).Specific).Value = objform.DataSources.DBDataSources.Item("@FANDETAIL").GetValue("DocEntry", 0);
-                //objform.Mode = SAPbouiCOM.BoFormMode.fm_OK_MODE;
-                //objform.Close();
-
-                //  objform.Items.Item("2").Click();
+                ((SAPbouiCOM.EditText)Matrix3.Columns.Item("U_udtNum").Cells.Item(rowNo).Specific).Value = oform.DataSources.DBDataSources.Item("@FANDETAIL").GetValue("DocEntry", 0);
+             
 
             }
 
@@ -783,14 +633,202 @@ namespace FanSpecV1
 
         private void Button1_ClickAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
         {
-          //  objform.Close();
-
+          
         }
 
         private void Button0_PressedAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
         {
-            objform.Close();
-            //throw new System.NotImplementedException();
+            if ( oform.Mode == SAPbouiCOM.BoFormMode.fm_ADD_MODE)
+                    oform.Close();
+         
+        }
+
+        private void EditText19_KeyDownAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
+        {
+            throw new System.NotImplementedException();
+
+        }
+
+        private SAPbouiCOM.EditText EditText37;
+
+        private void EditText37_KeyDownAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
+        {
+          
+
+        }
+
+        public string FindFile()
+        {
+            System.Threading.Thread ShowFolderBrowserThread;
+            
+            try
+            {
+                ShowFolderBrowserThread = new System.Threading.Thread(ShowFolderBrowser);
+
+                if (ShowFolderBrowserThread.ThreadState == System.Threading.ThreadState.Unstarted)
+                {
+                    ShowFolderBrowserThread.SetApartmentState(System.Threading.ApartmentState.STA);
+                    ShowFolderBrowserThread.Start();
+                }
+                else if (ShowFolderBrowserThread.ThreadState == System.Threading.ThreadState.Stopped)
+                {
+                    ShowFolderBrowserThread.Start();
+                    ShowFolderBrowserThread.Join();
+                }
+
+                while (ShowFolderBrowserThread.ThreadState == System.Threading.ThreadState.Running)
+                {
+                    System.Windows.Forms.Application.DoEvents();
+                    // ShowFolderBrowserThread.Sleep(100)
+                    Thread.Sleep(100);
+                }
+
+                if (Returnfilename != "")
+                    return Returnfilename;
+
+
+            }
+            catch (Exception ex)
+            {
+                clsModule.objaddon.objapplication.MessageBox("File Find  Method Failed : " + ex.Message);
+            }
+            return "";
+        }
+        public void ShowFolderBrowser()
+        {
+            System.Diagnostics.Process[] MyProcs;
+            OpenFileDialog OpenFile = new OpenFileDialog();
+        
+            try
+            {
+                OpenFile.Multiselect = false;
+                OpenFile.Filter = "All files(*.)|*.*"; // "|*.*"
+                int filterindex = 0;
+                try
+                {
+                    filterindex = 0;
+                }
+                catch (Exception ex)
+                {
+                }
+                OpenFile.FilterIndex = filterindex;              
+                OpenFile.InitialDirectory = clsModule.objaddon.objcompany.AttachMentPath; // "\\newton.tmicloud.net\DB4SHARE\OEC_TEST\Attachments\"
+                MyProcs = Process.GetProcessesByName("SAP Business One");
+
+                if (MyProcs.Length >= 1)
+                {
+                    for (int i = 0; i <= MyProcs.Length - 1; i++)
+                    {
+                        string[] comname = MyProcs[i].MainWindowTitle.ToString().Split(Convert.ToChar(@"-"));
+                        if (comname[0] == "")
+                            continue;                      
+                        string com = clsModule.objaddon.objcompany.CompanyName.ToUpper();
+                        if (comname[0].ToString().Trim().ToUpper() == com)
+                        {
+                            WindowWrapper MyWindow = new WindowWrapper(MyProcs[i].MainWindowHandle);
+                            System.Windows.Forms.DialogResult ret = OpenFile.ShowDialog(MyWindow);
+                            if (ret == System.Windows.Forms.DialogResult.OK)
+                                Returnfilename= OpenFile.FileName;
+                            else
+                                System.Windows.Forms.Application.ExitThread();
+                        }
+                    }
+                }
+                else
+                {
+                }
+            }
+            catch (Exception ex)
+            {
+                clsModule.objaddon.objapplication.StatusBar.SetText(ex.Message);
+                Returnfilename= "";
+            }
+            finally
+            {
+                OpenFile.Dispose();
+            }
+             
+        }
+
+        public class WindowWrapper : System.Windows.Forms.IWin32Window
+        {
+            private IntPtr _hwnd;
+
+            public WindowWrapper(IntPtr handle)
+            {
+                _hwnd = handle;
+            }
+
+            public System.IntPtr Handle
+            {
+                get
+                {
+                    return _hwnd;
+                }
+            }
+        }
+        public void OpenFile(string Path)
+        {
+            
+            try
+            {
+                if (string.IsNullOrEmpty(Path)) return;
+                System.Diagnostics.Process oProcess = new System.Diagnostics.Process();
+                try
+                {
+                    oProcess.StartInfo.FileName = Path;
+                    oProcess.Start();
+                }
+                catch (Exception ex1)
+                {                   
+                }
+                finally
+                {
+                }
+            }
+            catch (Exception ex)
+            {
+                clsModule.objaddon.objapplication.StatusBar.SetText("" + ex.Message, SAPbouiCOM.BoMessageTime.bmt_Short, SAPbouiCOM.BoStatusBarMessageType.smt_Warning);
+            }
+            finally
+            {
+            }
+        }
+
+        private void EditText25_DoubleClickAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
+        {
+
+            OpenFile(EditText25.Value);
+        }
+
+        private void EditText27_DoubleClickAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
+        {
+
+            OpenFile(EditText27.Value);
+        }
+
+        private void EditText29_KeyDownAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
+        {
+
+            OpenFile(EditText29.Value);
+
+        }
+
+        private void EditText26_KeyDownAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
+        {
+            OpenFile(EditText26.Value);
+
+        }
+
+        private void EditText28_KeyDownAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
+        {
+            OpenFile(EditText28.Value);
+
+        }
+
+        private void EditText30_KeyDownAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
+        {
+            OpenFile(EditText30.Value);
 
         }
     }
