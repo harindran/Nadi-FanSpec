@@ -47,6 +47,7 @@ namespace FanSpecV1
             this.EditText6 = ((SAPbouiCOM.EditText)(this.GetItem("etlcda").Specific));
             this.EditText6.KeyDownAfter += new SAPbouiCOM._IEditTextEvents_KeyDownAfterEventHandler(this.EditText6_KeyDownAfter);
             this.EditText8 = ((SAPbouiCOM.EditText)(this.GetItem("Item_11").Specific));
+            this.EditText8.KeyDownAfter += new SAPbouiCOM._IEditTextEvents_KeyDownAfterEventHandler(this.EditText8_KeyDownAfter);
             this.EditText9 = ((SAPbouiCOM.EditText)(this.GetItem("etopno").Specific));
             this.EditText10 = ((SAPbouiCOM.EditText)(this.GetItem("Item_6").Specific));
             this.ComboBox0 = ((SAPbouiCOM.ComboBox)(this.GetItem("cctype").Specific));
@@ -95,6 +96,7 @@ namespace FanSpecV1
             this.StaticText39 = ((SAPbouiCOM.StaticText)(this.GetItem("stntot").Specific));
             this.StaticText40 = ((SAPbouiCOM.StaticText)(this.GetItem("stcter").Specific));
             this.EditText25 = ((SAPbouiCOM.EditText)(this.GetItem("etntot").Specific));
+            this.EditText25.KeyDownAfter += new SAPbouiCOM._IEditTextEvents_KeyDownAfterEventHandler(this.EditText25_KeyDownAfter);
             this.EditText26 = ((SAPbouiCOM.EditText)(this.GetItem("etcpp").Specific));
             this.EditText27 = ((SAPbouiCOM.EditText)(this.GetItem("etcprol").Specific));
             this.EditText28 = ((SAPbouiCOM.EditText)(this.GetItem("etapp").Specific));
@@ -145,7 +147,31 @@ namespace FanSpecV1
                 objform.Items.Item("stcdet").FontSize = 12;
                 objform.Items.Item("stcdet").TextStyle = 1;
                 objform.Items.Item("sQsu").FontSize = 12;
-                objform.Items.Item("sQsu").TextStyle = 1; 
+                objform.Items.Item("sQsu").TextStyle = 1;
+                objform.Items.Item("stcprol").Top = objform.Items.Item("stcpph").Top + 17;
+                objform.Items.Item("etcprol").Top = objform.Items.Item("stcpph").Top + 17;
+                objform.Items.Item("stapno").Top = objform.Items.Item("stcpph").Top + 17;
+                objform.Items.Item("etapno").Top = objform.Items.Item("stcpph").Top + 17;
+                objform.Items.Item("ststot").Top = objform.Items.Item("stcpph").Top + 17;
+                objform.Items.Item("etstot").Top = objform.Items.Item("stcpph").Top + 17;
+                objform.Items.Item("stecus").Top = objform.Items.Item("stcprol").Top + 17;
+                objform.Items.Item("etecus").Top = objform.Items.Item("stcprol").Top + 17;
+                objform.Items.Item("chkequ").Top = objform.Items.Item("stcprol").Top + 17;
+                objform.Items.Item("stdtot").Top = objform.Items.Item("stapp").Top + 17;
+                objform.Items.Item("etditot").Top = objform.Items.Item("stapp").Top + 17;
+                objform.Items.Item("sQsu").Top = objform.Items.Item("stecus").Top + 17;
+                objform.Items.Item("etqsub").Top = objform.Items.Item("stecus").Top + 17;
+                objform.Items.Item("sttato").Top = objform.Items.Item("stdtot").Top + 17;
+                objform.Items.Item("ettatot").Top = objform.Items.Item("stdtot").Top + 17;
+                objform.Items.Item("stqid").Top = objform.Items.Item("sQsu").Top + 17;
+                objform.Items.Item("etqid").Top = objform.Items.Item("sQsu").Top + 17;
+                objform.Items.Item("stntot").Top = objform.Items.Item("ststot").Top + 17;
+                objform.Items.Item("etntot").Top = objform.Items.Item("ststot").Top + 17;
+                objform.Items.Item("stdat").Top = objform.Items.Item("stqid").Top + 17;
+                objform.Items.Item("etqdat").Top = objform.Items.Item("stqid").Top + 17;
+                objform.Items.Item("stdes").Top = objform.Items.Item("stdat").Top + 17;
+                objform.Items.Item("etedesc").Top = objform.Items.Item("stdat").Top + 17;
+
             }
             catch (Exception ex)
             {
@@ -308,6 +334,18 @@ namespace FanSpecV1
                 form1.rowNo = pVal.Row;
 
             }
+
+        }
+
+        private void EditText25_KeyDownAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
+        {
+           // throw new System.NotImplementedException();
+
+        }
+
+        private void EditText8_KeyDownAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
+        {
+           // throw new System.NotImplementedException();
 
         }
     }
