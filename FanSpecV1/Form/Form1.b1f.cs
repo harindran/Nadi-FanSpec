@@ -179,7 +179,7 @@ namespace FanSpecV1
             this.CheckBox22 = ((SAPbouiCOM.CheckBox)(this.GetItem("chkoeva").Specific));
             this.CheckBox23 = ((SAPbouiCOM.CheckBox)(this.GetItem("chkosil").Specific));
             this.CheckBox24 = ((SAPbouiCOM.CheckBox)(this.GetItem("chkIelb").Specific));
-            //                     this.CheckBox25 = ((SAPbouiCOM.CheckBox)(this.GetItem("chkIng").Specific));
+            //                            this.CheckBox25 = ((SAPbouiCOM.CheckBox)(this.GetItem("chkIng").Specific));
             this.CheckBox26 = ((SAPbouiCOM.CheckBox)(this.GetItem("Item_117").Specific));
             this.CheckBox27 = ((SAPbouiCOM.CheckBox)(this.GetItem("chkIvan").Specific));
             this.CheckBox28 = ((SAPbouiCOM.CheckBox)(this.GetItem("chkoamp").Specific));
@@ -254,6 +254,67 @@ namespace FanSpecV1
             this.Button7.ClickBefore += new SAPbouiCOM._IButtonEvents_ClickBeforeEventHandler(this.Button7_ClickBefore);
             this.EditText37 = ((SAPbouiCOM.EditText)(this.GetItem("DocEntry").Specific));
             this.EditText37.KeyDownAfter += new SAPbouiCOM._IEditTextEvents_KeyDownAfterEventHandler(this.EditText37_KeyDownAfter);
+            this.StaticText61 = ((SAPbouiCOM.StaticText)(this.GetItem("stAaxi").Specific));
+            this.CheckBox25 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxMF").Specific));
+            this.CheckBox64 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxgv").Specific));
+            this.CheckBox64.ClickBefore += new SAPbouiCOM._ICheckBoxEvents_ClickBeforeEventHandler(this.CheckBox64_ClickBefore);
+            this.CheckBox65 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxIGL").Specific));
+            this.CheckBox65.ClickBefore += new SAPbouiCOM._ICheckBoxEvents_ClickBeforeEventHandler(this.CheckBox65_ClickBefore);
+            this.CheckBox66 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxOGL").Specific));
+            this.CheckBox67 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxIBS").Specific));
+            this.CheckBox68 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxOBS").Specific));
+            this.CheckBox69 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxMG").Specific));
+            this.CheckBox70 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxTB").Specific));
+            this.CheckBox71 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxOS").Specific));
+            this.CheckBox72 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxIS").Specific));
+            this.CheckBox73 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxINC").Specific));
+            this.CheckBox74 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxBMI").Specific));
+            this.CheckBox75 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxBMO").Specific));
+            this.CheckBox76 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxRcu").Specific));
+            this.CheckBox77 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxOuC").Specific));
+            this.CheckBox78 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxRCo").Specific));
+            this.CheckBox79 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxWCO").Specific));
+            this.CheckBox80 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxInT").Specific));
+            this.CheckBox81 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxOuT").Specific));
+            this.CheckBox81.ClickBefore += new SAPbouiCOM._ICheckBoxEvents_ClickBeforeEventHandler(this.CheckBox81_ClickBefore);
+            this.CheckBox82 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxITCF").Specific));
+            this.CheckBox83 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxWSS").Specific));
+            this.CheckBox84 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxBGU").Specific));
+            this.CheckBox85 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxBBGU").Specific));
+            this.CheckBox86 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxBFr").Specific));
+            this.CheckBox87 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxSRa").Specific));
+            this.CheckBox88 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxAuL").Specific));
+            this.CheckBox89 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxVIS").Specific));
+            this.CheckBox90 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxVse").Specific));
+            this.CheckBox91 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxPse").Specific));
+            this.CheckBox92 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxEBu").Specific));
+            this.CheckBox93 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxACE").Specific));
+            this.CheckBox94 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxBRI").Specific));
+            this.CheckBox95 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxBSe").Specific));
+            this.CheckBox96 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxPGA").Specific));
+            this.CheckBox97 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxLDS").Specific));
+            this.CheckBox98 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxBEA").Specific));
+            this.CheckBox99 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxfpu").Specific));
+            this.CheckBox100 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxMpu").Specific));
+            this.CheckBox101 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxBel").Specific));
+            this.CheckBox102 = ((SAPbouiCOM.CheckBox)(this.GetItem("Item_43").Specific));
+            this.CheckBox103 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxMo").Specific));
+            this.CheckBox104 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxAct").Specific));
+            this.CheckBox104.ClickBefore += new SAPbouiCOM._ICheckBoxEvents_ClickBeforeEventHandler(this.CheckBox104_ClickBefore);
+            this.CheckBox105 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxmca").Specific));
+            this.CheckBox106 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxOMF").Specific));
+            this.CheckBox107 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxIMF").Specific));
+            this.CheckBox108 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxMBel").Specific));
+            this.CheckBox109 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxIFCo").Specific));
+            this.CheckBox110 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxIDa").Specific));
+            this.CheckBox111 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxOFCo").Specific));
+            this.CheckBox111.ClickBefore += new SAPbouiCOM._ICheckBoxEvents_ClickBeforeEventHandler(this.CheckBox111_ClickBefore);
+            this.CheckBox113 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxIGVa").Specific));
+            this.CheckBox115 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxPed").Specific));
+            this.CheckBox116 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxCGL").Specific));
+            this.CheckBox117 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxCon").Specific));
+            this.CheckBox118 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxInF").Specific));
+            this.CheckBox119 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxHin").Specific));
             this.OnCustomInitialize();
 
         }
@@ -297,6 +358,8 @@ namespace FanSpecV1
              oform.Items.Item("stMOC1").TextStyle = 1;
             oform.Items.Item("stacces").FontSize = 12;
             oform.Items.Item("stacces").TextStyle = 1;
+            oform.Items.Item("stAaxi").FontSize = 12;
+            oform.Items.Item("stAaxi").TextStyle = 1;
             oform.Items.Item("stattc").FontSize = 12;
             oform.Items.Item("stattc").TextStyle = 1;
             oform.ClientHeight = (oform.Items.Item("1").Top + 25);
@@ -831,5 +894,101 @@ namespace FanSpecV1
             OpenFile(EditText30.Value);
 
         }
+
+        private SAPbouiCOM.StaticText StaticText61;
+        private SAPbouiCOM.CheckBox CheckBox25;
+        private SAPbouiCOM.CheckBox CheckBox64;
+        private SAPbouiCOM.CheckBox CheckBox65;
+
+        private void CheckBox65_ClickBefore(object sboObject, SAPbouiCOM.SBOItemEventArg pVal, out bool BubbleEvent)
+        {
+            BubbleEvent = true;
+            //throw new System.NotImplementedException();
+
+        }
+
+        private void CheckBox64_ClickBefore(object sboObject, SAPbouiCOM.SBOItemEventArg pVal, out bool BubbleEvent)
+        {
+           BubbleEvent = true;
+           // throw new System.NotImplementedException();
+
+        }
+
+        private SAPbouiCOM.CheckBox CheckBox66;
+        private SAPbouiCOM.CheckBox CheckBox67;
+        private SAPbouiCOM.CheckBox CheckBox68;
+        private SAPbouiCOM.CheckBox CheckBox69;
+        private SAPbouiCOM.CheckBox CheckBox70;
+        private SAPbouiCOM.CheckBox CheckBox71;
+        private SAPbouiCOM.CheckBox CheckBox72;
+        private SAPbouiCOM.CheckBox CheckBox73;
+        private SAPbouiCOM.CheckBox CheckBox74;
+        private SAPbouiCOM.CheckBox CheckBox75;
+        private SAPbouiCOM.CheckBox CheckBox76;
+        private SAPbouiCOM.CheckBox CheckBox77;
+        private SAPbouiCOM.CheckBox CheckBox78;
+        private SAPbouiCOM.CheckBox CheckBox79;
+        private SAPbouiCOM.CheckBox CheckBox80;
+        private SAPbouiCOM.CheckBox CheckBox81;
+
+        private void CheckBox81_ClickBefore(object sboObject, SAPbouiCOM.SBOItemEventArg pVal, out bool BubbleEvent)
+        {
+            BubbleEvent = true;
+            //throw new System.NotImplementedException();
+
+        }
+
+        private SAPbouiCOM.CheckBox CheckBox82;
+        private SAPbouiCOM.CheckBox CheckBox83;
+        private SAPbouiCOM.CheckBox CheckBox84;
+        private SAPbouiCOM.CheckBox CheckBox85;
+        private SAPbouiCOM.CheckBox CheckBox86;
+        private SAPbouiCOM.CheckBox CheckBox87;
+        private SAPbouiCOM.CheckBox CheckBox88;
+        private SAPbouiCOM.CheckBox CheckBox89;
+        private SAPbouiCOM.CheckBox CheckBox90;
+        private SAPbouiCOM.CheckBox CheckBox91;
+        private SAPbouiCOM.CheckBox CheckBox92;
+        private SAPbouiCOM.CheckBox CheckBox93;
+        private SAPbouiCOM.CheckBox CheckBox94;
+        private SAPbouiCOM.CheckBox CheckBox95;
+        private SAPbouiCOM.CheckBox CheckBox96;
+        private SAPbouiCOM.CheckBox CheckBox97;
+        private SAPbouiCOM.CheckBox CheckBox98;
+        private SAPbouiCOM.CheckBox CheckBox99;
+        private SAPbouiCOM.CheckBox CheckBox100;
+        private SAPbouiCOM.CheckBox CheckBox101;
+        private SAPbouiCOM.CheckBox CheckBox102;
+        private SAPbouiCOM.CheckBox CheckBox103;
+        private SAPbouiCOM.CheckBox CheckBox104;
+        private SAPbouiCOM.CheckBox CheckBox105;
+
+        private void CheckBox104_ClickBefore(object sboObject, SAPbouiCOM.SBOItemEventArg pVal, out bool BubbleEvent)
+        {
+            BubbleEvent = true;
+           // throw new System.NotImplementedException();
+
+        }
+
+        private SAPbouiCOM.CheckBox CheckBox106;
+        private SAPbouiCOM.CheckBox CheckBox107;
+        private SAPbouiCOM.CheckBox CheckBox108;
+        private SAPbouiCOM.CheckBox CheckBox109;
+        private SAPbouiCOM.CheckBox CheckBox110;
+        private SAPbouiCOM.CheckBox CheckBox111;
+
+        private void CheckBox111_ClickBefore(object sboObject, SAPbouiCOM.SBOItemEventArg pVal, out bool BubbleEvent)
+        {
+            BubbleEvent = true;
+           // throw new System.NotImplementedException();
+
+        }
+
+        private SAPbouiCOM.CheckBox CheckBox113;
+        private SAPbouiCOM.CheckBox CheckBox115;
+        private SAPbouiCOM.CheckBox CheckBox116;
+        private SAPbouiCOM.CheckBox CheckBox117;
+        private SAPbouiCOM.CheckBox CheckBox118;
+        private SAPbouiCOM.CheckBox CheckBox119;
     }
 }
