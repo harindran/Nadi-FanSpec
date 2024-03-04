@@ -33,9 +33,31 @@ namespace FanSpecV1
             docentry = Docentry;
             oform.Mode = SAPbouiCOM.BoFormMode.fm_FIND_MODE;
             EditText37.Item.Visible = true;
-          EditText37.Value = Docentry;
-           oform.Items.Item("1").Click();
+            EditText37.Value = Docentry;
+            oform.Items.Item("1").Click();
             EditText37.Item.Visible = false;
+
+            flodervisible();
+
+        }
+
+        private void flodervisible()
+        {
+            Folder0.Item.Visible = false;
+            Folder1.Item.Visible = false;
+
+            if (ComboBox0.Value == "Axial")
+            {
+                Folder1.Item.Visible = true;
+                oform.PaneLevel = 12;
+
+
+            }
+            else
+            {
+                Folder0.Item.Visible = true;
+                oform.PaneLevel = 11;
+            }
         }
 
         /// <summary>
@@ -52,6 +74,7 @@ namespace FanSpecV1
             this.EditText2 = ((SAPbouiCOM.EditText)(this.GetItem("etpric").Specific));
             this.StaticText4 = ((SAPbouiCOM.StaticText)(this.GetItem("stQty").Specific));
             this.ComboBox0 = ((SAPbouiCOM.ComboBox)(this.GetItem("cftype").Specific));
+            this.ComboBox0.ComboSelectAfter += new SAPbouiCOM._IComboBoxEvents_ComboSelectAfterEventHandler(this.ComboBox0_ComboSelectAfter);
             this.ComboBox1 = ((SAPbouiCOM.ComboBox)(this.GetItem("cmodel").Specific));
             this.StaticText5 = ((SAPbouiCOM.StaticText)(this.GetItem("stpric").Specific));
             this.StaticText6 = ((SAPbouiCOM.StaticText)(this.GetItem("stval").Specific));
@@ -179,7 +202,7 @@ namespace FanSpecV1
             this.CheckBox22 = ((SAPbouiCOM.CheckBox)(this.GetItem("chkoeva").Specific));
             this.CheckBox23 = ((SAPbouiCOM.CheckBox)(this.GetItem("chkosil").Specific));
             this.CheckBox24 = ((SAPbouiCOM.CheckBox)(this.GetItem("chkIelb").Specific));
-            //                            this.CheckBox25 = ((SAPbouiCOM.CheckBox)(this.GetItem("chkIng").Specific));
+            //                                  this.CheckBox25 = ((SAPbouiCOM.CheckBox)(this.GetItem("chkIng").Specific));
             this.CheckBox26 = ((SAPbouiCOM.CheckBox)(this.GetItem("Item_117").Specific));
             this.CheckBox27 = ((SAPbouiCOM.CheckBox)(this.GetItem("chkIvan").Specific));
             this.CheckBox28 = ((SAPbouiCOM.CheckBox)(this.GetItem("chkoamp").Specific));
@@ -315,6 +338,13 @@ namespace FanSpecV1
             this.CheckBox117 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxCon").Specific));
             this.CheckBox118 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxInF").Specific));
             this.CheckBox119 = ((SAPbouiCOM.CheckBox)(this.GetItem("caxHin").Specific));
+            this.Folder0 = ((SAPbouiCOM.Folder)(this.GetItem("FAxial").Specific));
+            this.Folder1 = ((SAPbouiCOM.Folder)(this.GetItem("FCenti").Specific));
+            this.StaticText62 = ((SAPbouiCOM.StaticText)(this.GetItem("Item_3").Specific));
+            this.EditText32 = ((SAPbouiCOM.EditText)(this.GetItem("Item_4").Specific));
+            this.StaticText63 = ((SAPbouiCOM.StaticText)(this.GetItem("Item_5").Specific));
+            this.EditText33 = ((SAPbouiCOM.EditText)(this.GetItem("Item_6").Specific));
+            this.CheckBox112 = ((SAPbouiCOM.CheckBox)(this.GetItem("Item_7").Specific));
             this.OnCustomInitialize();
 
         }
@@ -990,5 +1020,19 @@ namespace FanSpecV1
         private SAPbouiCOM.CheckBox CheckBox117;
         private SAPbouiCOM.CheckBox CheckBox118;
         private SAPbouiCOM.CheckBox CheckBox119;
+        private SAPbouiCOM.Folder Folder0;
+        private SAPbouiCOM.Folder Folder1;
+
+        private void ComboBox0_ComboSelectAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
+        {
+            flodervisible();
+
+        }
+
+        private SAPbouiCOM.StaticText StaticText62;
+        private SAPbouiCOM.EditText EditText32;
+        private SAPbouiCOM.StaticText StaticText63;
+        private SAPbouiCOM.EditText EditText33;
+        private SAPbouiCOM.CheckBox CheckBox112;
     }
 }

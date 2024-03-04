@@ -16,7 +16,7 @@ namespace FanSpecV1
 
         /// <summary>
         /// Initialize components. Called by framework after form created.
-        /// </summary>
+        /// </summary>  
         public override void OnInitializeComponent()
         {
             this.Folder0 = ((SAPbouiCOM.Folder)(this.GetItem("Item_0").Specific));
@@ -117,6 +117,11 @@ namespace FanSpecV1
             this.ComboBox8 = ((SAPbouiCOM.ComboBox)(this.GetItem("ctind").Specific));
             this.Matrix0 = ((SAPbouiCOM.Matrix)(this.GetItem("38").Specific));
             this.Matrix0.LinkPressedBefore += new SAPbouiCOM._IMatrixEvents_LinkPressedBeforeEventHandler(this.Matrix0_LinkPressedBefore);
+            this.StaticText0 = ((SAPbouiCOM.StaticText)(this.GetItem("stQuoSum").Specific));
+            this.StaticText25 = ((SAPbouiCOM.StaticText)(this.GetItem("stCoD").Specific));
+            this.EditText0 = ((SAPbouiCOM.EditText)(this.GetItem("etCoD").Specific));
+            this.StaticText32 = ((SAPbouiCOM.StaticText)(this.GetItem("Item_7").Specific));
+            this.EditText3 = ((SAPbouiCOM.EditText)(this.GetItem("Item_8").Specific));
             this.OnCustomInitialize();
 
         }
@@ -148,6 +153,14 @@ namespace FanSpecV1
                 objform.Items.Item("stcdet").TextStyle = 1;
                 objform.Items.Item("sQsu").FontSize = 12;
                 objform.Items.Item("sQsu").TextStyle = 1;
+
+                objform.Items.Item("stdes").FontSize = 12;
+                objform.Items.Item("stdes").TextStyle = 1;
+
+                objform.Items.Item("stQuoSum").FontSize = 12;
+                objform.Items.Item("stQuoSum").TextStyle = 1;
+                
+
                 objform.Items.Item("stcprol").Top = objform.Items.Item("stcpph").Top + 17;
                 objform.Items.Item("etcprol").Top = objform.Items.Item("stcpph").Top + 17;
                 objform.Items.Item("stapno").Top = objform.Items.Item("stcpph").Top + 17;
@@ -156,22 +169,30 @@ namespace FanSpecV1
                 objform.Items.Item("etstot").Top = objform.Items.Item("stcpph").Top + 17;
                 objform.Items.Item("stecus").Top = objform.Items.Item("stcprol").Top + 17;
                 objform.Items.Item("etecus").Top = objform.Items.Item("stcprol").Top + 17;
-                objform.Items.Item("chkequ").Top = objform.Items.Item("stcprol").Top + 17;
+              
                 objform.Items.Item("stdtot").Top = objform.Items.Item("stapp").Top + 17;
                 objform.Items.Item("etditot").Top = objform.Items.Item("stapp").Top + 17;
                 objform.Items.Item("sQsu").Top = objform.Items.Item("stecus").Top + 17;
                 objform.Items.Item("etqsub").Top = objform.Items.Item("stecus").Top + 17;
                 objform.Items.Item("sttato").Top = objform.Items.Item("stdtot").Top + 17;
                 objform.Items.Item("ettatot").Top = objform.Items.Item("stdtot").Top + 17;
-                objform.Items.Item("stqid").Top = objform.Items.Item("sQsu").Top + 17;
-                objform.Items.Item("etqid").Top = objform.Items.Item("sQsu").Top + 17;
+
+                objform.Items.Item("stCoD").Top = objform.Items.Item("stdtot").Top + 17;
+                objform.Items.Item("etCoD").Top = objform.Items.Item("stdtot").Top + 17;
+
+                objform.Items.Item("stQuoSum").Top = objform.Items.Item("sQsu").Top + 17;
+
+                objform.Items.Item("stqid").Top = objform.Items.Item("sQsu").Top + 17 +17;
+                objform.Items.Item("etqid").Top = objform.Items.Item("sQsu").Top + 17+17;
+                objform.Items.Item("chkequ").Top = objform.Items.Item("sQsu").Top + 17+17;
+
                 objform.Items.Item("stntot").Top = objform.Items.Item("ststot").Top + 17;
                 objform.Items.Item("etntot").Top = objform.Items.Item("ststot").Top + 17;
                 objform.Items.Item("stdat").Top = objform.Items.Item("stqid").Top + 17;
                 objform.Items.Item("etqdat").Top = objform.Items.Item("stqid").Top + 17;
                 objform.Items.Item("stdes").Top = objform.Items.Item("stdat").Top + 17;
                 objform.Items.Item("etedesc").Top = objform.Items.Item("stdat").Top + 17;
-
+                
             }
             catch (Exception ex)
             {
@@ -348,5 +369,11 @@ namespace FanSpecV1
            // throw new System.NotImplementedException();
 
         }
+
+        private SAPbouiCOM.StaticText StaticText0;
+        private SAPbouiCOM.StaticText StaticText25;
+        private SAPbouiCOM.EditText EditText0;
+        private SAPbouiCOM.StaticText StaticText32;
+        private SAPbouiCOM.EditText EditText3;
     }
 }

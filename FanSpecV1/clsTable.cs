@@ -22,6 +22,10 @@ namespace FanSpecV1
             AddFields("@FANDETAIL", "Vol", "Volume", SAPbobsCOM.BoFieldTypes.db_Alpha, 40);
             AddFields("@FANDETAIL", "dri", "Drive", SAPbobsCOM.BoFieldTypes.db_Alpha, 40);
             AddFields("@FANDETAIL", "Moc", "MOC", SAPbobsCOM.BoFieldTypes.db_Alpha, 40);
+            
+
+            AddFields("@FANDETAIL", "FanSz", "Fan Size", SAPbobsCOM.BoFieldTypes.db_Alpha, 40);
+            AddFields("@FANDETAIL", "NoD", "Nature of Dust", SAPbobsCOM.BoFieldTypes.db_Alpha, 40);
             AddFields("@FANDETAIL", "fmount", "Fan Mount", SAPbobsCOM.BoFieldTypes.db_Alpha, 40);
             AddFields("@FANDETAIL", "selev", "Site Elevation", SAPbobsCOM.BoFieldTypes.db_Alpha, 40);
             AddFields("@FANDETAIL", "Nlevel", "Noise Level", SAPbobsCOM.BoFieldTypes.db_Alpha, 40);
@@ -183,6 +187,8 @@ namespace FanSpecV1
             AddFields("@FANDETAIL", "axped", "AX Pedestal", SAPbobsCOM.BoFieldTypes.db_Alpha, 2, SAPbobsCOM.BoFldSubTypes.st_None, SAPbobsCOM.UDFLinkedSystemObjectTypesEnum.ulNone, SAPbobsCOM.BoYesNoEnum.tNO, "N", true);
             AddFields("@FANDETAIL", "axcgl", "AX Cable Gland", SAPbobsCOM.BoFieldTypes.db_Alpha, 2, SAPbobsCOM.BoFldSubTypes.st_None, SAPbobsCOM.UDFLinkedSystemObjectTypesEnum.ulNone, SAPbobsCOM.BoYesNoEnum.tNO, "N", true);
             AddFields("@FANDETAIL", "axcond", "AX Conduit", SAPbobsCOM.BoFieldTypes.db_Alpha, 2, SAPbobsCOM.BoFldSubTypes.st_None, SAPbobsCOM.UDFLinkedSystemObjectTypesEnum.ulNone, SAPbobsCOM.BoYesNoEnum.tNO, "N", true);
+            AddFields("@FANDETAIL", "axinguard", "AX Intel Guard", SAPbobsCOM.BoFieldTypes.db_Alpha, 2, SAPbobsCOM.BoFldSubTypes.st_None, SAPbobsCOM.UDFLinkedSystemObjectTypesEnum.ulNone, SAPbobsCOM.BoYesNoEnum.tNO, "N", true);
+
 
 
             AddFields("OQUT", "opid", "Opportunity ID", SAPbobsCOM.BoFieldTypes.db_Alpha, 40);
@@ -229,6 +235,13 @@ namespace FanSpecV1
             AddFields("OQUT", "taxtot", "Tax Total", SAPbobsCOM.BoFieldTypes.db_Float, 40, SAPbobsCOM.BoFldSubTypes.st_Sum);
             AddFields("OQUT", "Nttot", "Net Total", SAPbobsCOM.BoFieldTypes.db_Float, 40, SAPbobsCOM.BoFldSubTypes.st_Sum);
             AddFields("OQUT", "desc", "Description", SAPbobsCOM.BoFieldTypes.db_Memo, 1000);
+
+
+
+            AddFields("OQUT", "CuType", "Customer Type", SAPbobsCOM.BoFieldTypes.db_Alpha, 40);
+            AddFields("OQUT", "CoD", "country Of Description", SAPbobsCOM.BoFieldTypes.db_Alpha, 40);
+
+
             AddFields("QUT1", "udtNum", "udt num", SAPbobsCOM.BoFieldTypes.db_Numeric, 10);
 
           //  AddUDO("FANDETAIL", "FANDETAIL", SAPbobsCOM.BoUDOObjType.boud_Document, "FANDETAIL", new[] { "" }, new[] { "DocEntry" }, true, false);
